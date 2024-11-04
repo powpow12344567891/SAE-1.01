@@ -1,8 +1,11 @@
 if __name__ == "__main__":
-    lecteur : str
-    scorej1 =str("1")
-    file = open("score.txt", "w", encoding="utf8")
+    lecteur1 : str
+    lecteur2 : str
+    scorej1 =str("joueur1")
+    scorej2 = str("joueur2")
+    file = open("score.txt", "r+", encoding="utf8")
     file.write(scorej1)
-    lecteur = file.read()
+    file.write("\n")
+    file.write(scorej2,)
+    lecteur1 = file.read()
     file.close()
-    print(lecteur)
