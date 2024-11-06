@@ -1,13 +1,15 @@
-def devinette(tour_tt:int):
+def devinette(manche_tt:int):
     choixj1: int =0
     choixj2 :int=0
     essai1 :int=0
     essai2 :int =0
     nombretoursj1 :int =0
     nombretoursj2 : int=0
-    
-    for i in range(tour_tt//2):
+
+    for i in range(manche_tt//2):
         #J1 choisit et J2 joue.
+        i+=1
+        print("manche",i)
         print("Tour du joueur 1")
         choixj1 =int(input("Veuillez choisir un nombre: "))
         while (essai2 != choixj1):
@@ -21,6 +23,8 @@ def devinette(tour_tt:int):
         print("La valeur est correcte, trouvé en", nombretoursj2, "tours")
         #J2 choisit et J1 joue.
         print("-----------------------------------------------------------------")
+        i+=1
+        print("manche",i)
         print("Tour du joueur 2")
         choixj2 =int(input("Veuillez choisir un nombre: "))
         while (essai1 != choixj2):
@@ -33,4 +37,4 @@ def devinette(tour_tt:int):
                 print("La valeur", essai1, "est plus grande que le valeur choisit.")
         print("La valeur est correcte, trouvé en", nombretoursj1, "tours")
         print("-----------------------------------------------------------------")
-    return "Le joueur 1 a pris un total de",nombretoursj1,"tours, tandis que le joueur 2 a pris un total de",nombretoursj2,"tours."
+    return "Le joueur 1 a pris un total de "+str(nombretoursj1)+" tours, tandis que le joueur 2 a pris un total de "+str(nombretoursj2)+" tours."
