@@ -1,3 +1,4 @@
+from Score import recup_val_score
 if __name__ == "__main__":
     choix: int 
     print("***********************************************************************************************")
@@ -7,7 +8,7 @@ if __name__ == "__main__":
     print("*                                    3) MORPION                                               *")
     print("*                                    4) SCORE                                                 *")
     print("***********************************************************************************************")
- 
+    
     choix= int(input("choisir une option : "))
     while((choix != 1) and (choix != 2) and (choix != 3)):
         choix= int(input("erreur, choisir une option : "))

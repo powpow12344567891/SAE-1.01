@@ -22,10 +22,6 @@ def exPassage(lst : list[str], val : int) :
     print(val)
 
 
-
-##################################################
-######## Saisie et affichage + Matrice ###########
-##################################################
 if __name__ =="__main__" :
     liste : list[int]
     listemot : list[str]
@@ -36,18 +32,18 @@ if __name__ =="__main__" :
         liste.append(i+1)
         print(liste)
     print(len(liste))
+
     print()
-    print("----------------------------------------------------------------------------")
     print("Initialisation Matrice")
-    print("----------------------------------------------------------------------------")
     print()
+
     print(saisieMat(5,5))
     listemot = ["quatre", "un", "deux", "trois"]
     val = 10
     print()
-    print("----------------------------------------------------------------------------")
+
     print("Passage en paramètre")
-    print("----------------------------------------------------------------------------")
+
     print()
     print(listemot)
     print(val)

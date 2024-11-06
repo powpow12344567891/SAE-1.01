@@ -1,0 +1,32 @@
+
+import random
+
+# Initialisation de la liste des nombres
+nombres = []
+
+# Saisie des nombres
+while True:
+    try:
+        nombre = int(input("Entrez un entier positif : "))
+        if nombre < 0:
+            break  # Arrête la saisie si le nombre est négatif
+        elif 0 < nombre <= 100:
+            nombres.append(nombre)
+        else:
+            print("Le nombre doit être strictement positif et inférieur ou égal à 100.")
+    except ValueError:
+        print("Veuillez entrer un nombre entier valide.")
+
+# Affichage des nombres saisis
+print("\nVous avez saisi :")
+print(" ".join(map(str, nombres)))
+
+# Mélange des nombres
+for _ in range(len(nombres)):
+    # Choix de deux indices aléatoires pour échanger les éléments
+    i, j = random.randint(0, len(nombres) - 1), random.randint(0, len(nombres) - 1)
+    nombres[i], nombres[j] = nombres[j], nombres[i]
+
+# Affichage des nombres mélangés
+print("\nJe mélange... :")
+print(" ".join(map(str, nombres)))
