@@ -1,10 +1,10 @@
 def devinette(manche_tt:int):
-    choixj1: int =0
+    choixj1 :int=0
     choixj2 :int=0
     essai1 :int=0
-    essai2 :int =0
-    nombretoursj1 :int =0
-    nombretoursj2 : int=0
+    essai2 :int=0
+    nombretoursj1 :int=0
+    nombretoursj2 :int=0
     manche:int=0
 
     for i in range(manche_tt//2):
