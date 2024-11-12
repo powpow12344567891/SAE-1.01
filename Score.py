@@ -8,7 +8,7 @@ if __name__ == "__main__":
     lecteurscorej2: str
     
     # Fonction pour récupérer les scores actuels des joueurs depuis un fichier texte
-    def recup_val_score(scorej1, scorej2):
+def recup_val_score():
         # Ouverture du fichier en mode lecture avec encodage UTF-8
         file = open("score.txt", "r", encoding="utf8")
         # Lecture et conversion des scores pour chaque joueur
@@ -21,7 +21,7 @@ if __name__ == "__main__":
         file.close()
         
     # Fonction pour ajouter une valeur aux scores des joueurs et sauvegarder les nouveaux scores
-    def ajout_de_val_score(scorej1, scorej2, ajoutscorej1, ajoutscorej2):
+def ajout_de_val_score():
         # Ouverture du fichier en mode écriture pour remplacer les scores actuels
         file = open("score.txt", "w", encoding="utf8")
         # Écriture des nouveaux scores des joueurs dans le fichier
