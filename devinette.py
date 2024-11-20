@@ -3,8 +3,8 @@ def devinette(manche_tt:int):
     choixj2 :int=0
     essai1 :int=0
     essai2 :int=0
-    nombretoursj1 :int=0
-    nombretoursj2 :int=0
+    nombretoursj1 :int=1
+    nombretoursj2 :int=1
     manche:int=0
 
     for i in range(manche_tt//2):
@@ -16,7 +16,6 @@ def devinette(manche_tt:int):
         print("Tour du joueur 1")
         choixj1 =int(input("Veuillez choisir un nombre: "))
         while (essai2 != choixj1):
-            nombretoursj2 += 1
             print("Tour", nombretoursj2)
             essai2 = int(input("J2 choisis une valeur: "))
             if essai2<choixj1:
@@ -34,7 +33,6 @@ def devinette(manche_tt:int):
         print("Tour du joueur 2")
         choixj2 =int(input("Veuillez choisir un nombre: "))
         while (essai1 != choixj2):
-            nombretoursj1 += 1
             print("Tour", nombretoursj1)
             essai1 = int(input("J1 choisis une valeur: "))
             if essai1<choixj2:
