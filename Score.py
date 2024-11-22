@@ -1,12 +1,5 @@
     # Initialisation des variables de score pour les deux joueurs
-ajoutscore1j1: int 
-ajoutscore1j2: int  
-ajoutscore2j1: int 
-ajoutscore2j2: int  
-ajoutscore3j1: int 
-ajoutscore3j2: int  
-scorejeu=[0,1,2,3,4,5]
-    # Fonction pour récupérer les scores actuels des joueurs depuis un fichier texte
+  # Fonction pour récupérer les scores actuels des joueurs depuis un fichier texte
 def recup_val_score():
         scorejeu :list[int]
         scorejeu=[0,1,2,3,4,5]
@@ -31,7 +24,13 @@ def recup_val_score():
     # Fonction pour ajouter une valeur aux scores des joueurs et sauvegarder les nouveaux scores
 def ajout_de_val_score():
         scorejeu :list[int]
-        scorejeu=[0,1,2,3,4,5]    
+        scorejeu=[0,1,2,3,4,5]   
+        ajoutscore1j1: int 
+        ajoutscore1j2: int  
+        ajoutscore2j1: int 
+        ajoutscore2j2: int  
+        ajoutscore3j1: int 
+        ajoutscore3j2: int         
         file = open("score.txt", "r", encoding="utf8")
         # Lecture et conversion des scores pour chaque joueur
         scorejeu[0] = int(file.readline())  # Lire la première ligne et convertir en entier pour scorej1
