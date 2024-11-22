@@ -124,11 +124,3 @@ def morpion():
         morpionj1()
     else :
         morpionj2()
-        
-
- 
-
-
-# Exécution du jeu si le script est exécuté directement
-if __name__ == "__main__":
-    morpion()
