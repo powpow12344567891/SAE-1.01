@@ -9,7 +9,7 @@ retourligne: int
 val: int
 tableau1: list[str]
 ordre : int
-
+choixtour : int
 # Initialisation des variables
 victoirej1 = False  # Indique si le joueur 1 a gagné
 victoirej2 = False  # Indique si le joueur 2 a gagné
@@ -21,7 +21,7 @@ lignes_gagnantes = [
     [3, 4, 5],  # Ligne 2
     [6, 7, 8],  # Ligne 3
     [0, 3, 6],  # Colonne 1
-    [1, 4, 7],  # Colonne 2
+    [1, 4, 7],  # Colonne  2
     [2, 5, 8],  # Colonne 3
     [0, 4, 8],  # Diagonale principale
     [2, 4, 6]   # Diagonale secondaire
@@ -76,7 +76,7 @@ def victoire():
                 victoirej2 = True  # Joueur 2 gagne
 
 # Fonction principale pour gérer le jeu
-def morpion():
+def morpionj1():
     global tour
     # Boucle principale du jeu
     while ((victoirej1 == False) and (victoirej2 == False) and (tour <= 9)):
@@ -89,7 +89,19 @@ def morpion():
             choixdujoueur2()  # Tour du joueur 2
             victoire()  # Vérifier la victoire
             tour += 1  # Passer au tour suivant
+def morpionj2():
+    global tour
+    # Boucle principale du jeu
+    while ((victoirej1 == False) and (victoirej2 == False) and (tour <= 9)):
+        choixdujoueur2()  # Tour du joueur 2
+        victoire()  # Vérifier la victoire
+        tour += 1  # Passer au tour suivant
 
+        # Si personne n'a gagné et qu'il reste des tours, c'est au joueur 2
+        if ((victoirej1 == False) and (victoirej2 == False) and (tour <= 9)):
+            choixdujoueur1()  # Tour du joueur 1 
+            victoire()  # Vérifier la victoire
+            tour += 1  # Passer au tour suivant
     # Vérification des résultats du jeu
     if victoirej1 == True:
         print("Victoire du joueur 1")
@@ -100,6 +112,22 @@ def morpion():
     else:
         print("égalité")
         affichagemorpion()
+
+def morpion():
+    print("choix du joueur qui commence")
+    print("j1 : 1")
+    print("j2 : 2")
+    choixtour = int(input("choix :"))
+    while ((choixtour != 1) and (choixtour != 2)):
+            choixtour = int(input("choix incorrecte :"))
+    if(choixtour == 1):
+        morpionj1()
+    else :
+        morpionj2()
+        
+
+ 
+
 
 # Exécution du jeu si le script est exécuté directement
 if __name__ == "__main__":
