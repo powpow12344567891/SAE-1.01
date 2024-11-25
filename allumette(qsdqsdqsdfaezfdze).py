@@ -1,4 +1,4 @@
-def allumette(Joueur1:str)
+def allumette(Joueur1:str):
     choixj1 :int
     choixj2 :int
     allumette:int=20
