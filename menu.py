@@ -17,7 +17,7 @@ def menu():
     if (choix == 3):
         morpion()
     if (choix == 4):
-        recup_val_score()
+        affichescore()
         
 if __name__ == "__main__":
     menu()
