@@ -1,4 +1,6 @@
 # Déclaration des variables
+from Score import *
+
 joueur1: int
 joueur2: int
 choix: int
@@ -26,12 +28,15 @@ lignes_gagnantes = [
     [0, 4, 8],  # Diagonale principale
     [2, 4, 6]   # Diagonale secondaire
 ]
-
-val = 0  # Variable inutilisée
-retourligne = 1  # Variable inutilisée
-
+def initialisationtableau():
+    global tableau1, tour, victoirej1, victoirej2
+    victoirej1 = False  # Indique si le joueur 1 a gagné
+    victoirej2 = False  # Indique si le joueur 2 a gagné
+    tour = 1 
+    tableau1 = ["  -  ", "  -  ", "  -  ", "  -  ", "  -  ", "  -  ", "  -  ", "  -  ", "  -  "]
 # Fonction pour afficher le plateau de jeu
 def affichagemorpion():
+    print("tour", tour)
     print("\n")
     print(tableau1[6],tableau1[7],tableau1[8],)
     print("\n")     
@@ -72,6 +77,7 @@ def victoire():
         if tableau1[ligne[0]] == tableau1[ligne[1]] == tableau1[ligne[2]] and tableau1[ligne[0]] != "  -  ":
             if tableau1[ligne[0]] == "  X  ":
                 victoirej1 = True  # Joueur 1 gagne
+
             elif tableau1[ligne[0]] == "  0  ":
                 victoirej2 = True  # Joueur 2 gagne
 
@@ -83,12 +89,28 @@ def morpionj1():
         choixdujoueur1()  # Tour du joueur 1
         victoire()  # Vérifier la victoire
         tour += 1  # Passer au tour suivant
-
-        # Si personne n'a gagné et qu'il reste des tours, c'est au joueur 2
+        
+        ajout_val_score()
+                # Si personne n'a gagné et qu'il reste des tours, c'est au joueur 2
         if ((victoirej1 == False) and (victoirej2 == False) and (tour <= 9)):
             choixdujoueur2()  # Tour du joueur 2
             victoire()  # Vérifier la victoire
             tour += 1  # Passer au tour suivant
+    if victoirej1 == True:
+        print("Victoire du joueur 1")
+        affichagemorpion()
+        ajoutscore[4] = 15-tour
+        ajout_val_score()
+        print("gain de", ajoutscore[4],"points au score")
+    elif victoirej2 == True:
+        print("Victoire du joueur 2")
+        affichagemorpion()
+        ajoutscore[5] = 15-tour
+        ajout_val_score()
+        print("gain de", ajoutscore[5],"points au score")
+    else:
+        print("égalité")
+        affichagemorpion()
 def morpionj2():
     global tour
     # Boucle principale du jeu
@@ -96,7 +118,7 @@ def morpionj2():
         choixdujoueur2()  # Tour du joueur 2
         victoire()  # Vérifier la victoire
         tour += 1  # Passer au tour suivant
-
+        
         # Si personne n'a gagné et qu'il reste des tours, c'est au joueur 2
         if ((victoirej1 == False) and (victoirej2 == False) and (tour <= 9)):
             choixdujoueur1()  # Tour du joueur 1 
@@ -106,14 +128,22 @@ def morpionj2():
     if victoirej1 == True:
         print("Victoire du joueur 1")
         affichagemorpion()
+        ajoutscore[4] = 15-tour
+        ajout_val_score()
+        print("gain de", ajoutscore[4],"points au score")
     elif victoirej2 == True:
         print("Victoire du joueur 2")
         affichagemorpion()
+        print("gain de", ajoutscore[5],"points au score")
+
+        ajoutscore[5] = 15-tour
+        ajout_val_score()
+
     else:
         print("égalité")
         affichagemorpion()
-
 def morpion():
+    initialisationtableau()
     print("choix du joueur qui commence")
     print("j1 : 1")
     print("j2 : 2")

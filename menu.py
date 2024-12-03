@@ -16,8 +16,10 @@ def menu():
         choix= int(input("erreur, choisir une option : "))
     if (choix == 3):
         morpion()
+        menu()
     if (choix == 4):
         affichescore()
+        menu()
         
 if __name__ == "__main__":
     menu()
