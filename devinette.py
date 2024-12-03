@@ -1,5 +1,8 @@
 # Fonction qui gère le jeu de devinettes pour une manche
 def devinnettes(choix: int, manche: int):
+    """
+    Fonction permettant de choisir et verifier si le numéro choisie correspond ou non.
+    """
     essai: int  # Valeur tentée par le joueur
     nombretours: int = 1  # Nombre de tentatives dans une manche
     
@@ -32,6 +35,9 @@ def devinnettes(choix: int, manche: int):
 
 # Fonction principale qui gère l'ensemble des manches
 def lancement():
+    """
+    Fonction de lancement et de gestion des manches et du scores (principalement du visuel).
+    """
     manche_tt: int  # Nombre total de manches
     manche: int = 0  # Compteur de manches
     choix: int  # Valeur à deviner pour la manche
