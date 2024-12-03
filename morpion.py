@@ -29,11 +29,14 @@ lignes_gagnantes = [
     [2, 4, 6]   # Diagonale secondaire
 ]
 def initialisationtableau():
-    global tableau1, tour, victoirej1, victoirej2
+    global tableau1, tour, victoirej1, victoirej2, ajoutscore
     victoirej1 = False  # Indique si le joueur 1 a gagné
     victoirej2 = False  # Indique si le joueur 2 a gagné
     tour = 1 
     tableau1 = ["  -  ", "  -  ", "  -  ", "  -  ", "  -  ", "  -  ", "  -  ", "  -  ", "  -  "]
+    ajoutscore[4] = 0
+    ajoutscore[5] = 0
+
 # Fonction pour afficher le plateau de jeu
 def affichagemorpion():
     print("tour", tour)

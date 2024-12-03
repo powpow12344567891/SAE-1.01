@@ -12,8 +12,9 @@ def menu():
     print("***********************************************************************************************")
     
     choix= int(input("choisir une option : "))
-    while((choix != 1) and (choix != 2) and (choix != 3) and (choix != 4)):
+    while choix not in [1, 2, 3, 4]:
         choix= int(input("erreur, choisir une option : "))
+
     if (choix == 3):
         morpion()
         menu()

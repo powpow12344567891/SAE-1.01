@@ -34,6 +34,6 @@ def ajout_val_score():
         file.write(str(scorejeu[3] + ajoutscore[3]))  # Ajoute ajoutscorej2 au score actuel de joueur 2 et l'écrit
         file.write("\n") 
         file.write(str(scorejeu[4] + ajoutscore[4]))  # Ajoute ajoutscorej1 au score actuel de joueur 1 et l'écrit
-        file.write("\n") 
+        file.write("\n")
         file.write(str(scorejeu[5] + ajoutscore[5]))  # Ajoute ajoutscorej2 au score actuel de joueur 2 et l'écrit
         file.close() # Fermeture du fichier
