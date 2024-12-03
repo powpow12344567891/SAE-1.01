@@ -41,6 +41,6 @@ def allumette(joueur1:str, joueur2:str):
         print("")
 
     if perdant==1:
-        print("Le joueur 1 a perdu.")
+        print(joueur1,"a perdu.")
     elif perdant==2:
-        print("Le joueur 2 a perdu.")
+        print(joueur2,"a perdu.")

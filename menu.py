@@ -1,6 +1,7 @@
 from Score import *
 from morpion import *
 from devinette import *
+from allumette import *
 
 def menu():
     choix: int 
@@ -19,7 +20,9 @@ def menu():
         lancement()
         menu()
     if (choix == 2):
-        lancement()
+        joueur1=str(input("Entrez le nom du joueur 1: "))
+        joueur2=str(input("Entrez le nom du joueur 2: "))
+        allumette(joueur1,joueur2)
         menu()
     if (choix == 3):
         morpion()
