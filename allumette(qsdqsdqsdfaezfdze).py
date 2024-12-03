@@ -1,4 +1,4 @@
-def allumette(Joueur1:str):
+def allumette(joueur1:str, joueur2:str):
     choixj1 :int
     choixj2 :int
     allumette:int=20
@@ -9,10 +9,12 @@ def allumette(Joueur1:str):
         print("|", end="")
     print("")
     while allumette>=0:
-        choixj1=int(input("Joueur 1, veuillez choisir combien d'allumette vous voulez prendre, entre 1 et 3: "))
+        print(joueur1)
+        choixj1=int(input("Veuillez choisir combien d'allumette vous voulez prendre, entre 1 et 3: "))
         while choixj1<1 or choixj1>3:
             print("Erreur")
-            choixj1=int(input("Joueur 1, veuillez choisir combien d'allumette vous voulez prendre, entre 1 et 3: "))
+            print(joueur1)
+            choixj1=int(input("Veuillez choisir combien d'allumette vous voulez prendre, entre 1 et 3: "))
         allumette-=choixj1-1
         if allumette<=0:
             perdant=1
@@ -22,10 +24,12 @@ def allumette(Joueur1:str):
         for allumette in range(allumette):
             print("|", end="")
         print("")
-        choixj2=int(input("Joueur 2, veuillez choisir combien d'allumette vous voulez prendre, entre 1 et 3: "))
+        print(joueur2)
+        choixj2=int(input("Veuillez choisir combien d'allumette vous voulez prendre, entre 1 et 3: "))
         while choixj2<1 or choixj2>3:
             print("Erreur")
-            choixj2=int(input("Joueur 2, veuillez choisir combien d'allumette vous voulez prendre, entre 1 et 3: "))
+            print(joueur2)
+            choixj2=int(input("Veuillez choisir combien d'allumette vous voulez prendre, entre 1 et 3: "))
         allumette-=choixj2-1
         if allumette<=0:
             perdant=2
