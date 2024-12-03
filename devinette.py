@@ -1,4 +1,5 @@
 # Fonction qui gère le jeu de devinettes pour une manche
+from Score import *
 def devinnettes(choix: int, manche: int):
     """
     Fonction permettant de choisir et verifier si le numéro choisie correspond ou non.
@@ -74,4 +75,7 @@ def lancement():
         print("-----------------------------------------------------------------")
 
     # Affiche les résultats finaux des deux joueurs
+    ajoutscore[0] = 15 - nombretoursj1
+    ajoutscore[1] = 15 - nombretoursj2
+    ajout_val_score()
     print("Le joueur 1 a pris un total de", nombretoursj1, "tours, tandis que le joueur 2 a pris un total de", nombretoursj2, "tours.")
