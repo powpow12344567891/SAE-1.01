@@ -1,43 +1,71 @@
-def devinnettes(choix:int):
-    essai:int
-    nombretours:int=1
-    if manche%2==1:
-        essai=int(input("J2 choisis une valeur: "))
+# Fonction qui gère le jeu de devinettes pour une manche
+def devinnettes(choix: int, manche: int):
+    essai: int  # Valeur tentée par le joueur
+    nombretours: int = 1  # Nombre de tentatives dans une manche
+    
+    # Détermine quel joueur doit entrer une valeur en fonction du numéro de la manche
+    if manche % 2 == 1:
+        essai = int(input("J2 choisis une valeur: "))
     else:
-        essai=int(input("J1 choisis une valeur: "))
-    while (essai!=choix):
-        print("Tour",nombretours)
-        nombretours+=1
-        if essai<choix:
-            print("La valeur", essai, "est plus petite que le valeur choisit.")
-        elif essai>choix:
-            print("La valeur", essai, "est plus grande que le valeur choisit.")
+        essai = int(input("J1 choisis une valeur: "))
+    
+    # Boucle pour continuer tant que le joueur n'a pas trouvé la valeur choisie
+    while essai != choix:
+        print("Tour", nombretours)  # Affiche le numéro du tour
+        nombretours += 1  # Incrémente le compteur de tours
+        
+        # Indique si la valeur entrée est plus petite ou plus grande que la valeur à trouver
+        if essai < choix:
+            print("La valeur", essai, "est plus petite que la valeur choisie.")
+        elif essai > choix:
+            print("La valeur", essai, "est plus grande que la valeur choisie.")
+        
+        # Demande au même joueur d'entrer une nouvelle valeur
+        if manche % 2 == 1:
+            essai = int(input("J2 choisis une valeur: "))
         else:
-            print("La valeur est correcte, trouvé en", nombretours, "tours")
-            return nombretours
-        if manche%2==1:
-            essai=int(input("J2 choisis une valeur: "))
-        else:
-            essai=int(input("J1 choisis une valeur: "))
+            essai = int(input("J1 choisis une valeur: "))
+    
+    # Une fois la bonne valeur trouvée, affiche le nombre de tours pris
+    print("La valeur est correcte, trouvée en", nombretours, "tours.")
+    return nombretours  # Retourne le nombre de tours pris par le joueur
 
-if __name__=="__main__":
-    manche_tt:int
-    manche:int=0
-    choix:int
-    nombretoursj1:int=0
-    nombretoursj2:int=0
-    manche_tt=int(input("Entrez le nombre de manche que vous souhaiter réaliser: "))
+# Fonction principale qui gère l'ensemble des manches
+def lancement():
+    manche_tt: int  # Nombre total de manches
+    manche: int = 0  # Compteur de manches
+    choix: int  # Valeur à deviner pour la manche
+    nombretoursj1: int = 0  # Nombre total de tours pris par le joueur 1
+    nombretoursj2: int = 0  # Nombre total de tours pris par le joueur 2
+
+    # Demande à l'utilisateur de saisir le nombre total de manches
+    manche_tt = int(input("Entrez le nombre de manches que vous souhaitez réaliser: "))
+
+    # Boucle pour jouer toutes les manches
     for i in range(manche_tt):
-        #J1 choisit et J2 joue.
-        manche=manche+1
-        print("Round",i+1)
-        print("manche",manche)
-        if manche%2==1:
+        manche += 1  # Incrémente le numéro de la manche
+        print("Round", i + 1)  # Affiche le numéro du round
+        print("manche", manche)
+
+        # Indique quel joueur choisit la valeur à deviner
+        if manche % 2 == 1:
             print("Tour du joueur 1")
         else:
             print("Tour du joueur 2")
-        choix=int(input("Entrez la valeur à trouver: "))
-        devinnettes(choix)
-        #J2 choisit et J1 joue.
+        
+        # Demande au joueur actif d'entrer la valeur à deviner
+        choix = int(input("Entrez la valeur à trouver: "))
+        
+        # Joue la manche et récupère le nombre de tours pris
+        nombretours = devinnettes(choix, manche)
+        
+        # Met à jour les scores totaux en fonction du joueur actif
+        if manche % 2 == 1:
+            nombretoursj2 += nombretours
+        else:
+            nombretoursj1 += nombretours
+        
         print("-----------------------------------------------------------------")
-    print("Le joueur 1 a pris un total de "+str(nombretoursj1)+" tours, tandis que le joueur 2 a pris un total de "+str(nombretoursj2)+" tours.")
+
+    # Affiche les résultats finaux des deux joueurs
+    print("Le joueur 1 a pris un total de", nombretoursj1, "tours, tandis que le joueur 2 a pris un total de", nombretoursj2, "tours.")
