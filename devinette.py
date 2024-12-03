@@ -47,6 +47,8 @@ def lancement():
 
     # Demande à l'utilisateur de saisir le nombre total de manches
     manche_tt = int(input("Entrez le nombre de manches que vous souhaitez réaliser: "))
+    while(manche_tt < 2):
+        manche_tt = int(input(" erreur valeur inferieur a 2 Entrez le nombre de manches que vous souhaitez réaliser: "))
 
     # Boucle pour jouer toutes les manches
     for i in range(manche_tt):
