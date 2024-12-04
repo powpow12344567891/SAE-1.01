@@ -48,29 +48,37 @@ def affichagemorpion():
     print(tableau1[0],tableau1[1],tableau1[2],)
 # Fonction pour gérer le choix du joueur 1
 def choixdujoueur1():
+    global tableau1
     affichagemorpion()
     print("\n")
-    choix = int(input("choix de la case joueur 1 "))  # Demander une case au joueur 1
-    print("\n")
-    # Vérifier si le choix est valide
-    while (choix > 9) or (tableau1[choix - 1] != "  -  "):
-        print("\n", "choix non valide")
-        choix = int(input("choix de la case joueur 1 "))
-    print("\n")
-    tableau1[choix - 1] = str("  X  ")  # Marquer la case avec un "X"
+    choix_valide = False  # Indicateur pour vérifier si le choix est valide
+    while not choix_valide:
+        try:
+            choix = int(input("Choix de la case joueur 1 (1 à 9) : "))  # Demander une case au joueur 1
+            if 1 <= choix <= 9 and tableau1[choix - 1] == "  -  ":
+                tableau1[choix - 1] = "  X  "  # Marquer la case avec un "X"
+                choix_valide = True  # Marquer que le choix est valide pour sortir de la boucle
+            else:
+                print("Choix non valide, essayez à nouveau.")
+        except ValueError:
+            print("Erreur : Veuillez entrer un nombre entier entre 1 et 9.")
 
 # Fonction pour gérer le choix du joueur 2
 def choixdujoueur2():
+    global tableau1
     affichagemorpion()
     print("\n")
-    choix = int(input("choix de la case joueur 2 "))  # Demander une case au joueur 2
-    print("\n")
-    # Vérifier si le choix est valide
-    while (choix > 9) or (tableau1[choix - 1] != "  -  "):
-        print("\n", "choix non valide")
-        choix = int(input("choix de la case joueur 2 "))
-    print("\n")
-    tableau1[choix - 1] = str("  0  ")  # Marquer la case avec un "0"
+    choix_valide = False  # Indicateur pour vérifier si le choix est valide
+    while not choix_valide:
+        try:
+            choix = int(input("Choix de la case joueur 2 (1 à 9) : "))  # Demander une case au joueur 2
+            if 1 <= choix <= 9 and tableau1[choix - 1] == "  -  ":
+                tableau1[choix - 1] = "  0  "  # Marquer la case avec un "0"
+                choix_valide = True  # Marquer que le choix est valide pour sortir de la boucle
+            else:
+                print("Choix non valide, essayez à nouveau.")
+        except ValueError:
+            print("Erreur : Veuillez entrer un nombre entier entre 1 et 9.")
 
 # Fonction pour vérifier si un joueur a gagné
 def victoire():
@@ -148,13 +156,20 @@ def morpionj2():
         affichagemorpion()
 def morpion():
     initialisationtableau()
-    print("choix du joueur qui commence")
-    print("j1 : 1")
-    print("j2 : 2")
-    choixtour = int(input("choix :"))
-    while ((choixtour != 1) and (choixtour != 2)):
-            choixtour = int(input("choix incorrecte :"))
-    if(choixtour == 1):
-        morpionj1()
-    else :
-        morpionj2()
+    print("Choix du joueur qui commence")
+    print("1) Joueur 1 (X)")
+    print("2) Joueur 2 (O)")
+    choix_valide = False  # Indicateur pour vérifier si le choix est valide
+    while not choix_valide:
+        try:
+            choixtour = int(input("Choix (1 ou 2) : "))
+            if choixtour in [1, 2]:
+                choix_valide = True  # Marquer que le choix est valide pour sortir de la boucle
+                if choixtour == 1:
+                    morpionj1()
+                else:
+                    morpionj2()
+            else:
+                print("Choix incorrect, veuillez entrer 1 ou 2.")
+        except ValueError:
+            print("Erreur : Veuillez entrer un nombre entier (1 ou 2).")
