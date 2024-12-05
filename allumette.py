@@ -1,54 +1,62 @@
 from Score import *
-def allumette(joueur1:str, joueur2:str):
-    choixj1 :int
-    choixj2 :int
-    allumette:int=20
-    perdant :int=0
 
-    print("Il reste",allumette,"allumettes.")
-    for allumette in range(allumette):
-        print("|", end="")
-    print("")
-    while allumette>=0:
-        print(joueur1)
-        choixj1=int(input("Veuillez choisir combien d'allumette vous voulez prendre, entre 1 et 3: "))
-        while choixj1<1 or choixj1>3:
-            print("Erreur")
-            print(joueur1)
-            choixj1=int(input("Veuillez choisir combien d'allumette vous voulez prendre, entre 1 et 3: "))
-        allumette-=choixj1-1
-        if allumette<=0:
-            perdant=1
-            break
-        print(choixj1)
-        print("Il reste",allumette,"allumettes.")
-        for allumette in range(allumette):
-            print("|", end="")
-        print("")
-        print(joueur2)
-        choixj2=int(input("Veuillez choisir combien d'allumette vous voulez prendre, entre 1 et 3: "))
-        while choixj2<1 or choixj2>3:
-            print("Erreur")
-            print(joueur2)
-            choixj2=int(input("Veuillez choisir combien d'allumette vous voulez prendre, entre 1 et 3: "))
-        allumette-=choixj2-1
-        if allumette<=0:
-            perdant=2
-            break
-        print(choixj2)
-        print("Il reste",allumette,"allumettes.")
-        for allumette in range(allumette):
-            print("|", end="")
-        print("")
+def allumette(joueur1: str, joueur2: str):
+    choixj1: int
+    choixj2: int
+    allumette: int = 20
+    perdant: int = 0
 
-    if perdant==1:
+    # Affiche le nombre initial d'allumettes
+    print("Il reste", allumette, "allumettes.")
+    print("|" * allumette)
+
+    while allumette > 0:
+        # Tour du joueur 1
+        print(f"{joueur1}, c'est votre tour.")
+        choixj1 = demande_allumettes(f"{joueur1}, choisissez combien d'allumettes vous voulez prendre (entre 1 et 3) : ")
+        allumette -= choixj1
+
+        if allumette <= 0:
+            perdant = 1
+            break
+
+        print(f"{joueur1} a pris {choixj1} allumettes.")
+        print("Il reste", allumette, "allumettes.")
+        print("|" * allumette)
+
+        # Tour du joueur 2
+        print(f"{joueur2}, c'est votre tour.")
+        choixj2 = demande_allumettes(f"{joueur2}, choisissez combien d'allumettes vous voulez prendre (entre 1 et 3) : ")
+        allumette -= choixj2
+
+        if allumette <= 0:
+            perdant = 2
+            break
+
+        print(f"{joueur2} a pris {choixj2} allumettes.")
+        print("Il reste", allumette, "allumettes.")
+        print("|" * allumette)
+
+    # Affichage des résultats
+    if perdant == 1:
         ajoutscore[3] = 10
         ajout_val_score()
-        print(joueur2,"a gagné ",ajoutscore[3]," points" )
-        print(joueur1,"a perdu.")
-
-    elif perdant==2:
+        print(f"{joueur2} a gagné et remporte {ajoutscore[3]} points !")
+        print(f"{joueur1} a perdu.")
+    elif perdant == 2:
         ajoutscore[2] = 10
         ajout_val_score()
-        print(joueur1,"a gagné ",ajoutscore[2]," points" )
-        print(joueur2,"a perdu.")
+        print(f"{joueur1} a gagné et remporte {ajoutscore[2]} points !")
+        print(f"{joueur2} a perdu.")
+
+# Fonction pour demander un nombre valide d'allumettes
+def demande_allumettes(message: str):
+    while True:
+        try:
+            choix = int(input(message))
+            if 1 <= choix <= 3:
+                return choix
+            else:
+                print("Erreur : Veuillez choisir un nombre entre 1 et 3.")
+        except ValueError:
+            print("Erreur : Veuillez entrer un nombre entier valide.")

@@ -1,17 +1,18 @@
 # Fonction qui gère le jeu de devinettes pour une manche
 from Score import *
+
 def devinnettes(choix: int, manche: int):
     """
-    Fonction permettant de choisir et verifier si le numéro choisie correspond ou non.
+    Fonction permettant de choisir et vérifier si le numéro choisi correspond ou non.
     """
     essai: int  # Valeur tentée par le joueur
     nombretours: int = 1  # Nombre de tentatives dans une manche
-    
+
     # Détermine quel joueur doit entrer une valeur en fonction du numéro de la manche
     if manche % 2 == 1:
-        essai = int(input("J2 choisis une valeur: "))
+        essai = demande_valeur("J2 choisis une valeur: ")
     else:
-        essai = int(input("J1 choisis une valeur: "))
+        essai = demande_valeur("J1 choisis une valeur: ")
     
     # Boucle pour continuer tant que le joueur n'a pas trouvé la valeur choisie
     while essai != choix:
@@ -26,18 +27,26 @@ def devinnettes(choix: int, manche: int):
         
         # Demande au même joueur d'entrer une nouvelle valeur
         if manche % 2 == 1:
-            essai = int(input("J2 choisis une valeur: "))
+            essai = demande_valeur("J2 choisis une valeur: ")
         else:
-            essai = int(input("J1 choisis une valeur: "))
+            essai = demande_valeur("J1 choisis une valeur: ")
     
     # Une fois la bonne valeur trouvée, affiche le nombre de tours pris
     print("La valeur est correcte, trouvée en", nombretours, "tours.")
     return nombretours  # Retourne le nombre de tours pris par le joueur
 
-# Fonction principale qui gère l'ensemble des manches
+
+# Fonction pour demander une valeur numérique et gérer les erreurs
+def demande_valeur(message: str):
+    while True:
+        try:
+            return int(input(message))
+        except ValueError:
+            print("Erreur : Veuillez entrer un nombre entier valide.")
+
 def lancement():
     """
-    Fonction de lancement et de gestion des manches et du scores (principalement du visuel).
+    Fonction de lancement et de gestion des manches et des scores.
     """
     manche_tt: int  # Nombre total de manches
     manche: int = 0  # Compteur de manches
@@ -46,15 +55,15 @@ def lancement():
     nombretoursj2: int = 0  # Nombre total de tours pris par le joueur 2
 
     # Demande à l'utilisateur de saisir le nombre total de manches
-    manche_tt = int(input("Entrez le nombre de manches que vous souhaitez réaliser: "))
-    while(manche_tt < 2):
-        manche_tt = int(input(" erreur valeur inferieur a 2 Entrez le nombre de manches que vous souhaitez réaliser: "))
+    manche_tt = demande_valeur("Entrez le nombre de manches que vous souhaitez réaliser (minimum 2) : ")
+    while manche_tt < 2:
+        manche_tt = demande_valeur("Erreur : La valeur doit être supérieure ou égale à 2. Entrez un nouveau nombre de manches : ")
 
     # Boucle pour jouer toutes les manches
     for i in range(manche_tt):
         manche += 1  # Incrémente le numéro de la manche
         print("Round", i + 1)  # Affiche le numéro du round
-        print("manche", manche)
+        print("Manche", manche)
 
         # Indique quel joueur choisit la valeur à deviner
         if manche % 2 == 1:
@@ -63,7 +72,7 @@ def lancement():
             print("Tour du joueur 2")
         
         # Demande au joueur actif d'entrer la valeur à deviner
-        choix = int(input("Entrez la valeur à trouver: "))
+        choix = demande_valeur("Entrez la valeur à trouver : ")
         
         # Joue la manche et récupère le nombre de tours pris
         nombretours = devinnettes(choix, manche)
