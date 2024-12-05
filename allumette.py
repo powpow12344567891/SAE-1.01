@@ -49,7 +49,7 @@ def cond_vic(perdant:int, joueur1: str, joueur2: str):
         ajout_val_score()
         print(f"{joueur1} a gagné et remporte {ajoutscore[2]} points !")
         print(f"{joueur2} a perdu.")
-        
+    exit()
 
 # Fonction pour demander un nombre valide d'allumettes
 def demande_allumettes(message: str):
