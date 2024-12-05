@@ -29,15 +29,15 @@ def allumette(joueur1: str, joueur2: str):
         choixj2 = demande_allumettes(f"{joueur2}, choisissez combien d'allumettes vous voulez prendre (entre 1 et 3) : ")
         allumette -= choixj2
 
-        if allumette <= 0:
-            perdant = 2
-            cond_vic(perdant, joueur1, joueur2)
-
         print(f"{joueur2} a pris {choixj2} allumettes.")
         print("Il reste", allumette, "allumettes.")
         print("|" * allumette)
 
-    # Affichage des résultats
+        if allumette <= 0:
+            perdant = 2
+            cond_vic(perdant, joueur1, joueur2)
+
+# Affichage des résultats
 def cond_vic(perdant:int, joueur1: str, joueur2: str):
     if perdant == 1:
         ajoutscore[3] = 10
@@ -49,7 +49,7 @@ def cond_vic(perdant:int, joueur1: str, joueur2: str):
         ajout_val_score()
         print(f"{joueur1} a gagné et remporte {ajoutscore[2]} points !")
         print(f"{joueur2} a perdu.")
-    exit()
+    
 
 # Fonction pour demander un nombre valide d'allumettes
 def demande_allumettes(message: str):
