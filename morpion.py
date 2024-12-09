@@ -1,6 +1,5 @@
 # Déclaration des variables
 from Score import *
-
 joueur1: int
 joueur2: int
 choix: int
@@ -36,9 +35,7 @@ def initialisationtableau():
     tableau1 = ["  -  ", "  -  ", "  -  ", "  -  ", "  -  ", "  -  ", "  -  ", "  -  ", "  -  "]
     ajoutscore[4] = 0
     ajoutscore[5] = 0
-
-# Fonction pour afficher le plateau de jeu
-def affichagemorpion():
+def affichagemorpion():# Fonction pour afficher le plateau de jeu
     print("tour", tour)
     print("\n")
     print(tableau1[6],tableau1[7],tableau1[8],)
@@ -46,8 +43,7 @@ def affichagemorpion():
     print(tableau1[3],tableau1[4],tableau1[5],)
     print("\n")
     print(tableau1[0],tableau1[1],tableau1[2],)
-# Fonction pour gérer le choix du joueur 1
-def choixdujoueur1():
+def choixdujoueur1():# Fonction pour gérer le choix du joueur 1
     global tableau1
     affichagemorpion()
     print("\n")
@@ -62,9 +58,7 @@ def choixdujoueur1():
                 print("Choix non valide, essayez à nouveau.")
         except ValueError:
             print("Erreur : Veuillez entrer un nombre entier entre 1 et 9.")
-
-# Fonction pour gérer le choix du joueur 2
-def choixdujoueur2():
+def choixdujoueur2():# Fonction pour gérer le choix du joueur 2
     global tableau1
     affichagemorpion()
     print("\n")
@@ -79,9 +73,8 @@ def choixdujoueur2():
                 print("Choix non valide, essayez à nouveau.")
         except ValueError:
             print("Erreur : Veuillez entrer un nombre entier entre 1 et 9.")
+def victoire():# Fonction pour vérifier si un joueur a gagné
 
-# Fonction pour vérifier si un joueur a gagné
-def victoire():
     global victoirej1, victoirej2  # Utilisation des variables globales
     # Vérification de toutes les combinaisons gagnantes
     for ligne in lignes_gagnantes: 
@@ -91,18 +84,14 @@ def victoire():
 
             elif tableau1[ligne[0]] == "  0  ":
                 victoirej2 = True  # Joueur 2 gagne
-
-# Fonction principale pour gérer le jeu
-def morpionj1():
+def morpionj1():# Fonction principale pour gérer le jeu
     global tour
     # Boucle principale du jeu
     while ((victoirej1 == False) and (victoirej2 == False) and (tour <= 9)):
         choixdujoueur1()  # Tour du joueur 1
         victoire()  # Vérifier la victoire
-        tour += 1  # Passer au tour suivant
-        
-        ajout_val_score()
-                # Si personne n'a gagné et qu'il reste des tours, c'est au joueur 2
+        tour += 1  # Passer au tour suivant      
+        ajout_val_score()                # Si personne n'a gagné et qu'il reste des tours, c'est au joueur 2
         if ((victoirej1 == False) and (victoirej2 == False) and (tour <= 9)):
             choixdujoueur2()  # Tour du joueur 2
             victoire()  # Vérifier la victoire
@@ -123,34 +112,28 @@ def morpionj1():
         print("égalité")
         affichagemorpion()
 def morpionj2():
-    global tour
-    # Boucle principale du jeu
+    global tour # Boucle principale du jeu
     while ((victoirej1 == False) and (victoirej2 == False) and (tour <= 9)):
         choixdujoueur2()  # Tour du joueur 2
         victoire()  # Vérifier la victoire
-        tour += 1  # Passer au tour suivant
-        
+        tour += 1  # Passer au tour suivant  
         # Si personne n'a gagné et qu'il reste des tours, c'est au joueur 2
         if ((victoirej1 == False) and (victoirej2 == False) and (tour <= 9)):
             choixdujoueur1()  # Tour du joueur 1 
             victoire()  # Vérifier la victoire
-            tour += 1  # Passer au tour suivant
-    # Vérification des résultats du jeu
+            tour += 1  # Passer au tour suivant   # Vérification des résultats du jeu
     if victoirej1 == True:
         print("Victoire du joueur 1")
         ajoutscore[4] = 15-tour
         ajout_val_score()
         print("gain de", ajoutscore[4],"points au score")
         affichagemorpion()
-
     elif victoirej2 == True:
         print("Victoire du joueur 2")
         print("gain de", ajoutscore[5],"points au score")
         ajoutscore[5] = 15-tour
         ajout_val_score()
         affichagemorpion()
-
-
     else:
         print("égalité")
         affichagemorpion()
