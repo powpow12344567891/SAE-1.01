@@ -19,13 +19,13 @@ tableau1 = ["  -  ", "  -  ", "  -  ", "  -  ", "  -  ", "  -  ", "  -  ", "  - 
 # Liste des combinaisons gagnantes possibles
 lignes_gagnantes = [
     [0, 1, 2],  # Ligne 1
-    [3, 4, 5],  # Ligne 2
+    [3, 4, 5],  # Lige 2
     [6, 7, 8],  # Ligne 3
     [0, 3, 6],  # Colonne 1
     [1, 4, 7],  # Colonne  2
     [2, 5, 8],  # Colonne 3
-    [0, 4, 8],  # Diagonale principale
-    [2, 4, 6]   # Diagonale secondaire
+    [0, 4, 8],  # Diagonale
+    [2, 4, 6]   # Diagonale
 ]
 def initialisationtableau():
     global tableau1, tour, victoirej1, victoirej2, ajoutscore
@@ -124,14 +124,14 @@ def morpionj2():
             tour += 1  # Passer au tour suivant   # Vérification des résultats du jeu
     if victoirej1 == True:
         print("Victoire du joueur 1")
-        ajoutscore[4] = 15-tour
+        ajoutscore[4] = 15-tour# le score est de 15 a la base et diminue d'un point par tour
         ajout_val_score()
-        print("gain de", ajoutscore[4],"points au score")
+        print("gain de", ajoutscore[4],"points au score") #affichage du score
         affichagemorpion()
     elif victoirej2 == True:
         print("Victoire du joueur 2")
-        print("gain de", ajoutscore[5],"points au score")
         ajoutscore[5] = 15-tour
+        print("gain de", ajoutscore[5],"points au score") #affichage du score
         ajout_val_score()
         affichagemorpion()
     else:

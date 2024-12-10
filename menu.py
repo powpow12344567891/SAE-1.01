@@ -1,16 +1,16 @@
 import os  # Pour interagir avec le système d'exploitation
-from Score import affichescore  # Importer uniquement la fonction `affichescore` du module `Score`
-from morpion import morpion  # Importer uniquement la fonction `morpion` du module `morpion`
-from devinette import lancement  # Importer uniquement la fonction `lancement` du module `devinette`
-from allumette import allumette  # Importer uniquement la fonction `allumette` du module `allumette`
+from Score import affichescore  # Importer uniquement la fonction affichescore
+from morpion import morpion  # Importer uniquement la fonction morpion
+from devinette import lancement  # Importer uniquement la fonction lancement
+from allumette import allumette  # Importer uniquement la fonction allumette
 
 # Fonction pour effacer l'écran de la console
 def clear():
-    os.system('cls')  # Commande spécifique à Windows pour nettoyer la console
+    os.system('cls')  # Commande Windows pour nettoyer la console
 
 # Fonction principale du menu
 def menu():
-    clear()  # Efface l'écran au début de l'exécution du menu
+    clear()  # Efface l'écran au debut
     while True:  # Boucle infinie pour afficher le menu jusqu'à ce que l'utilisateur quitte
         # Affichage du menu principal
         print("***********************************************************************************************")
@@ -31,12 +31,12 @@ def menu():
         except ValueError:
             # Gestion de l'erreur si l'entrée n'est pas un entier
             print("Erreur, veuillez entrer un nombre entier correspondant à une option.")
-            continue  # Recommence la boucle en cas d'erreur
+            continue  # Recommence la boucle
 
-        # Exécute une action en fonction du choix de l'utilisateur
+        # Exécute une action en fonction du choix
         if choix == 1:
             clear()  # Efface l'écran
-            lancement()  # Appelle la fonction `lancement` (probablement liée au jeu DEVINETTE)
+            lancement()  # Appelle la fonction
         elif choix == 2:
             clear()  # Efface l'écran
             # Demande les noms des deux joueurs pour le jeu ALLUMETTE
@@ -49,13 +49,11 @@ def menu():
         elif choix == 4:
             clear()  # Efface l'écran
             affichescore()  # Appelle la fonction pour afficher le score
-
-        # Option pour quitter le programme
+        #quitter le programme
         elif choix == 5:
             clear()  # Efface l'écran
-            print("Merci d'avoir joué ! À bientôt.")  # Message de fin
-            break  # Sort de la boucle, terminant ainsi le programme
+            print("Merci d'avoir joué ! À bientôt.")
+            break  # Sort de la boucle
 
-# Point d'entrée du programme
 if __name__ == "__main__":
-    menu()  # Appelle la fonction `menu` pour démarrer l'application
+    menu()  # Appelle la fonction menu pour démarrer le programme
