@@ -1,4 +1,4 @@
-from Score import *
+from Score import ajoutscore, ajout_val_score
 def allumette(joueur1: str, joueur2: str):
     choixj1: int
     choixj2: int

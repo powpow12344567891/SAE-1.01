@@ -1,5 +1,5 @@
 # Fonction qui gère le jeu de devinettes pour une manche
-from Score import *
+from Score import ajoutscore, ajout_val_score
 def devinnettes(choix: int, manche: int):
     """
     Fonction permettant de choisir et vérifier si le numéro choisi correspond ou non.

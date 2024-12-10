@@ -1,5 +1,5 @@
 # Déclaration des variables
-from Score import *
+from Score import ajoutscore, ajout_val_score
 joueur1: int
 joueur2: int
 choix: int
@@ -50,7 +50,7 @@ def choixdujoueur1():# Fonction pour gérer le choix du joueur 1
     choix_valide = False  # Indicateur pour vérifier si le choix est valide
     while not choix_valide:
         try:
-            choix = int(input("Choix de la case joueur 1 (1 à 9) : "))  # Demander une case au joueur 1
+            choix = int(input("Choix de la case joueur 1 (1 à 9 comme un pavé numerique) : "))  # Demander une case au joueur 1
             if 1 <= choix <= 9 and tableau1[choix - 1] == "  -  ":
                 tableau1[choix - 1] = "  X  "  # Marquer la case avec un "X"
                 choix_valide = True  # Marquer que le choix est valide pour sortir de la boucle
@@ -65,7 +65,7 @@ def choixdujoueur2():# Fonction pour gérer le choix du joueur 2
     choix_valide = False  # Indicateur pour vérifier si le choix est valide
     while not choix_valide:
         try:
-            choix = int(input("Choix de la case joueur 2 (1 à 9) : "))  # Demander une case au joueur 2
+            choix = int(input("Choix de la case joueur 2 (1 à 9 comme un pavé numerique) : "))  # Demander une case au joueur 2
             if 1 <= choix <= 9 and tableau1[choix - 1] == "  -  ":
                 tableau1[choix - 1] = "  0  "  # Marquer la case avec un "0"
                 choix_valide = True  # Marquer que le choix est valide pour sortir de la boucle
