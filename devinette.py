@@ -73,7 +73,14 @@ def lancement():
             nombretoursj1 += nombretours
         print("-----------------------------------------------------------------")
     # Affiche les résultats finaux des deux joueurs
-    ajoutscore[0] = 15 - nombretoursj1
-    ajoutscore[1] = 15 - nombretoursj2
+   
+    if (nombretoursj1 > 14): 
+        print("joueur 1 a mis au moins 15 tour il ne gagne donc aucun points")
+    else:
+        ajoutscore[0] = 15 - nombretoursj1
+    if (nombretoursj2 > 14): 
+        print("joueur 2 a mis au moins 15 tour il ne gagne donc aucun points")
+    else:
+        ajoutscore[1] = 15 - nombretoursj1
     ajout_val_score()
     print("Le joueur 1 a pris un total de", nombretoursj1, "tours, tandis que le joueur 2 a pris un total de", nombretoursj2, "tours.")
