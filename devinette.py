@@ -47,13 +47,14 @@ def lancement():
     nombretoursj1: int = 0  # Nombre total de tours pris par le joueur 1
     nombretoursj2: int = 0  # Nombre total de tours pris par le joueur 2
     # Demande à l'utilisateur de saisir le nombre total de manches
-    manche_tt = demande_valeur("Entrez le nombre de manches que vous souhaitez réaliser (minimum 2) : ")
-    while manche_tt < 2:
-        manche_tt = demande_valeur("Erreur : La valeur doit être supérieure ou égale à 2. Entrez un nouveau nombre de manches : ")
+    manche_tt = demande_valeur("Entrez le nombre de manches que vous souhaitez réaliser minimum 2 et paire : ")
+    while (manche_tt < 2) or (manche_tt % 2 == 1):
+        manche_tt = demande_valeur("Erreur : La valeur doit être supérieure ou égale à 2 ou impaire. Entrez un nouveau nombre de manches : ")
+    
     # Boucle pour jouer toutes les manches
     for i in range(manche_tt):
-        manche += 1  # Incrémente le numéro de la manche
-        print("Round", i + 1)  # Affiche le numéro du round
+        if i % 2 == 0: 
+            manche += 1  # Incrémente le numéro de la manche
         print("Manche", manche)
         # Indique quel joueur choisit la valeur à deviner
         if manche % 2 == 1:
@@ -67,13 +68,23 @@ def lancement():
         # Joue la manche et récupère le nombre de tours pris
         nombretours = devinnettes(choix, manche)
         # Met à jour les scores totaux en fonction du joueur actif
-        if manche % 2 == 1:
+        if i % 2 == 0:
             nombretoursj2 += nombretours
         else:
             nombretoursj1 += nombretours
         print("-----------------------------------------------------------------")
     # Affiche les résultats finaux des deux joueurs
-    ajoutscore[0] = 15 - nombretoursj1
-    ajoutscore[1] = 15 - nombretoursj2
+   
+    if (nombretoursj1 > 14): 
+        print("joueur 1 a mis au moins 15 tour il ne gagne donc aucun points")
+    else:
+        ajoutscore[0] = 15 - nombretoursj1
+        print("le joueur 1 a gagnié", 15 - nombretoursj1,"points")
+    if (nombretoursj2 > 14): 
+        print("joueur 2 a mis au moins 15 tour il ne gagne donc aucun points")
+    else:
+        ajoutscore[1] = 15 - nombretoursj2
+        print("le joueur 2 a gagnié", 15 - nombretoursj2,"points")
+
     ajout_val_score()
     print("Le joueur 1 a pris un total de", nombretoursj1, "tours, tandis que le joueur 2 a pris un total de", nombretoursj2, "tours.")
