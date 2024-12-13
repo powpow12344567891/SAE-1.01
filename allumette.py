@@ -4,7 +4,7 @@ def allumette(joueur1: str, joueur2: str):
     choixj2: int
     allumette: int = 20
     perdant: int = 0  # Affiche le nombre initial d'allumettes
-    print("Il reste", allumette, "allumettes.")
+    print("Il y a un total de", allumette, "allumettes.")
     print("|" * allumette)
     while allumette > 0:  
         # Tour du joueur 1
