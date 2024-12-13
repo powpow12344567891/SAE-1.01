@@ -23,8 +23,12 @@ def allumette(joueur1: str, joueur2: str):
             break
 
         print(f"{joueur1} a pris {choixj1} allumettes.")
-        print("Il reste", allumette, "allumettes.")
-        print("|" * allumette)         
+        if allumette > 1:
+            print("Il reste", allumette, "allumettes.")
+        else:
+            print("Il reste", allumette, "allumette.")
+        print("|" * allumette)
+
         # Tour du joueur 2
         print(f"{joueur2}, c'est votre tour.")
         choixj2 = demande_allumettes(f"{joueur2}, choisissez combien d'allumettes vous voulez prendre (entre 1 et 3) : ")
@@ -41,7 +45,10 @@ def allumette(joueur1: str, joueur2: str):
             break
 
         print(f"{joueur2} a pris {choixj2} allumettes.")
-        print("Il reste", allumette, "allumettes.")
+        if allumette > 1:
+            print("Il reste", allumette, "allumettes.")
+        else:
+            print("Il reste", allumette, "allumette.")
         print("|" * allumette)
 
 

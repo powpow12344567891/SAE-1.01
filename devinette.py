@@ -55,7 +55,6 @@ def lancement():
     for i in range(manche_tt):
         if i % 2 == 0: 
             manche += 1  # Incrémente le numéro de la manche
-        print("Round", i + 1)  # Affiche le numéro du round
         print("Manche", manche)
         # Indique quel joueur choisit la valeur à deviner
         if manche % 2 == 1:
@@ -69,7 +68,7 @@ def lancement():
         # Joue la manche et récupère le nombre de tours pris
         nombretours = devinnettes(choix, manche)
         # Met à jour les scores totaux en fonction du joueur actif
-        if manche % 2 == 1:
+        if i % 2 == 0:
             nombretoursj2 += nombretours
         else:
             nombretoursj1 += nombretours
@@ -80,9 +79,12 @@ def lancement():
         print("joueur 1 a mis au moins 15 tour il ne gagne donc aucun points")
     else:
         ajoutscore[0] = 15 - nombretoursj1
+        print("le joueur 1 a gagnié", 15 - nombretoursj1,"points")
     if (nombretoursj2 > 14): 
         print("joueur 2 a mis au moins 15 tour il ne gagne donc aucun points")
     else:
-        ajoutscore[1] = 15 - nombretoursj1
+        ajoutscore[1] = 15 - nombretoursj2
+        print("le joueur 2 a gagnié", 15 - nombretoursj2,"points")
+
     ajout_val_score()
     print("Le joueur 1 a pris un total de", nombretoursj1, "tours, tandis que le joueur 2 a pris un total de", nombretoursj2, "tours.")
