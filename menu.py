@@ -2,7 +2,7 @@ import os  # Pour interagir avec le système d'exploitation
 from Score import affichescore  # Importer uniquement la fonction affichescore
 from morpion import morpion  # Importer uniquement la fonction morpion
 from devinette import lancement  # Importer uniquement la fonction lancement
-from allumette import allumette  # Importer uniquement la fonction allumette
+from allumette import choix_pvpve  # Importer uniquement la fonction allumette
 
 # Fonction pour effacer l'écran de la console
 def clear():
@@ -39,10 +39,7 @@ def menu():
             lancement()  # Appelle la fonction
         elif choix == 2:
             clear()  # Efface l'écran
-            # Demande les noms des deux joueurs pour le jeu ALLUMETTE
-            joueur1 = input("Entrez le nom du joueur 1: ")
-            joueur2 = input("Entrez le nom du joueur 2: ")
-            allumette(joueur1, joueur2)  # Lance le jeu ALLUMETTE avec les noms des joueurs
+            choix_pvpve()  # Lance le jeu ALLUMETTE
         elif choix == 3:
             clear()  # Efface l'écran
             morpion()  # Lance le jeu MORPION
