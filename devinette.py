@@ -1,6 +1,7 @@
 # Fonction qui gère le jeu de devinettes pour une manche
 from Score import ajoutscore, ajout_val_score
-def devinnettes(choix: int, manche: int):
+from bot_devinette import *
+def devinnettesjoueur(choix: int, manche: int):
     """
     Fonction permettant de choisir et vérifier si le numéro choisi correspond ou non.
     """
@@ -37,6 +38,36 @@ def demande_valeur(message: str):
             return int(input(message))
         except ValueError:
             print("Erreur : Veuillez entrer un nombre entier valide.")
+def devinettepve(choix: int, manche: int):
+    """
+    Fonction permettant de choisir et vérifier si le numéro choisi correspond ou non.
+    """
+    essai: int  # Valeur tentée par le joueur
+    nombretours: int = 1  # Nombre de tentatives dans une manche
+    # Détermine quel joueur doit entrer une valeur en fonction du numéro de la manche
+    if manche % 2 == 1:
+        essai = demande_valeur("J2 choisis une valeur: ")
+    else:
+        botfacile()
+    
+    # Boucle pour continuer tant que le joueur n'a pas trouvé la valeur choisie
+    while essai != choix:
+        print("Tour", nombretours)  # Affiche le numéro du tour
+        nombretours += 1  # Incrémente le compteur de tours # Indique si la valeur entrée est plus petite ou plus grande que la valeur à trouver
+        if essai < choix:
+            print("La valeur", essai, "est plus petite que la valeur choisie.")
+        elif essai > choix:
+            print("La valeur", essai, "est plus grande que la valeur choisie.")
+        
+        # Demande au même joueur d'entrer une nouvelle valeur
+        if manche % 2 == 1:
+            essai = demande_valeur("J2 choisis une valeur: ")
+        else:
+            essai = demande_valeur("J1 choisis une valeur: ")
+    
+    # Une fois la bonne valeur trouvée, affiche le nombre de tours pris
+    print("La valeur est correcte, trouvée en", nombretours, "tours.")
+    return nombretours  # Retourne le nombre de tours pris par le joueur
 def lancement():
     """
     Fonction de lancement et de gestion des manches et des scores.
@@ -66,7 +97,7 @@ def lancement():
         while choix > 1000:
            choix = demande_valeur("Erreur : La valeur doit être maximum 1000. Entrez un nouveau nombre : ")
         # Joue la manche et récupère le nombre de tours pris
-        nombretours = devinnettes(choix, manche)
+        nombretours = devinnettesjoueur(choix, manche)
         # Met à jour les scores totaux en fonction du joueur actif
         if i % 2 == 0:
             nombretoursj2 += nombretours
