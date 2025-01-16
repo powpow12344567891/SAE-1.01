@@ -50,8 +50,6 @@ def allumette(joueur1: str, joueur2: str):
         else:
             print("Il reste", allumette, "allumette.")
         print("|" * allumette)
-
-
 # Affichage des résultats
 def cond_vic(perdant:int, joueur1: str, joueur2: str):
     if perdant == 1:
@@ -59,7 +57,6 @@ def cond_vic(perdant:int, joueur1: str, joueur2: str):
         ajout_val_score()
         print(f"{joueur2} a gagné et remporte {ajoutscore[3]} points !")
         print(f"{joueur1} a perdu.")
-
     elif perdant == 2:
         ajoutscore[2] = 10
         ajout_val_score()
