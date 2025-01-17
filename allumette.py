@@ -1,5 +1,26 @@
 from Score import ajoutscore, ajout_val_score
-def allumette(joueur1: str, joueur2: str):
+import random
+
+def choix_pvpve():
+    choixMode:int
+    print("Entrez 1 pour jouer contre un autre joueur local.")
+    print("Entrez 2 pour jouer contre un bot à difficultée variable.")
+    print("Entrez 3 pour faire jouer un bot contre un autre avec difficultée variable.")
+    choixMode=int(input("Entrez votre choix: "))
+    if choixMode==1:
+        joueur1 = input("Entrez le nom du joueur 1: ")
+        joueur2 = input("Entrez le nom du joueur 2: ")
+        allumette(joueur1, joueur2, choixMode)
+    elif choixMode==2:
+        joueur1 = input("Entrez le nom du joueur 1: ")
+        joueur2 = "Ordinateur_1"
+        allumette(joueur1, joueur2, choixMode)
+    elif choixMode==3:
+        joueur1 = "Ordinateur_1"
+        joueur2 = "Ordinateur_2"
+        allumette(joueur1, joueur2, choixMode)
+
+def allumette(joueur1: str, joueur2: str, choixMode:int):
     choixj1: int
     choixj2: int
     allumette: int = 20
@@ -9,10 +30,13 @@ def allumette(joueur1: str, joueur2: str):
     while allumette > 0:  
         # Tour du joueur 1
         print(f"{joueur1}, c'est votre tour.")
-        choixj1 = demande_allumettes(f"{joueur1}, choisissez combien d'allumettes vous voulez prendre (entre 1 et 3) : ")
+        if choixMode==1 or choixMode==2:
+            choixj1 = demande_allumettes(f"{joueur1}, choisissez combien d'allumettes vous voulez prendre (entre 1 et 3) : ")
+        else:
+            choixj1=random.randint(1,3)
         
         while choixj1 > allumette:
-            print("Erreur, il n'y a pas la quantité d'allumette que vous soouhaité retirer.")
+            print("Erreur, il n'y a pas la quantité d'allumette que vous souhaité retirer.")
             choixj1 = demande_allumettes(f"{joueur1}, choisissez combien d'allumettes vous voulez prendre (entre 1 et 3) : ")
         allumette -= choixj1
 
@@ -30,14 +54,19 @@ def allumette(joueur1: str, joueur2: str):
         print("|" * allumette)
 
         # Tour du joueur 2
-        print(f"{joueur2}, c'est votre tour.")
-        choixj2 = demande_allumettes(f"{joueur2}, choisissez combien d'allumettes vous voulez prendre (entre 1 et 3) : ")
-        
-        while choixj2 > allumette:
-            print("Erreur, il n'y a pas la quantité d'allumette que vous soouhaité retirer.")
+        print("C'est au tour de",f"{joueur2}")
+        if choixMode==1:
             choixj2 = demande_allumettes(f"{joueur2}, choisissez combien d'allumettes vous voulez prendre (entre 1 et 3) : ")
-        allumette -= choixj2
-
+            while choixj2 > allumette:
+                print("Erreur, il n'y a pas la quantité d'allumette que vous souhaité retirer.")
+                choixj2 = demande_allumettes(f"{joueur2}, choisissez combien d'allumettes vous voulez prendre (entre 1 et 3) : ")
+            allumette -= choixj2
+        else:
+            choixj2=random.randint(1,3)
+            while choixj2 > allumette:
+                choixj2 = random.randint(1,allumette)
+            allumette -= choixj2
+            
         if allumette <= 0:
             print("Vous avez retiré la dernière allumette.")
             perdant = 2
