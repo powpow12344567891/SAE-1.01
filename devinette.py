@@ -192,13 +192,13 @@ def lancement():
 
     # Affichage des scores finaux
     if nombretoursj1 > 14:
-        print("Le joueur 1 a mis plus de 15 tours et a mis", nombretoursj1 ," tours, is ne gagne donc aucun point.")
+        print("Le joueur 1 a mis plus de 15 tours et a mis {nombretoursj1} tours, il ne gagne donc aucun point.")
     else:
         ajoutscore[0] = 15 - nombretoursj1
         print("Le joueur 1 a gagné", 15 - nombretoursj1, "points.")
 
     if nombretoursj2 > 14:
-        print("Le joueur 1 a mis plus de 15 tours et a mis", nombretoursj2," tours, il ne gagne donc aucun point.")
+        print("Le joueur 1 a mis plus de 15 tours et a mis {nombretoursj2} tours, il ne gagne donc aucun point.")
     else:
         ajoutscore[1] = 15 - nombretoursj2
         print("Le joueur 2 a gagné", 15 - nombretoursj2, "points.")

@@ -3,7 +3,7 @@ from Score import affichescore  # Importer uniquement la fonction affichescore
 from morpion import menumorpion  # Importer uniquement la fonction morpion
 from devinette import lancement  # Importer uniquement la fonction lancement
 from allumette import choix_pvpve  # Importer uniquement la fonction allumette
-from puissance4 import jeuhumain
+from puissance4 import jeuhumain_ou_bot 
 
 # Fonction pour effacer l'écran de la console
 def clear():
@@ -50,7 +50,7 @@ def menu():
             menumorpion()  # Lance le jeu MORPION
         elif choixmenu == 4:
             clear()  # Efface l'écran
-            jeuhumain()
+            jeuhumain_ou_bot()
   # Appelle la fonction pour afficher le score
         #quitter le programme
         elif choixmenu == 5:

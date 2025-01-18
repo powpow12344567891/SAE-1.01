@@ -293,11 +293,8 @@ def morpionbotj1():# Fonction principale pour gérer le jeu
         ajout_val_score()
         print("gain de", ajoutscore[4],"points au score")
     elif victoirej2 == True:
-        print("Victoire du joueur 2")
-        affichagemorpion()
-        ajoutscore[5] = 15-tour
-        ajout_val_score()
-        print("gain de", ajoutscore[5],"points au score")
+       affichagemorpion()
+       print("gain du bot")
     else:
         print("égalité")
         affichagemorpion()    
@@ -313,10 +310,8 @@ def morpionbotj2():  # Fonction principale pour gérer le jeu
             victoire()  # Vérifier la victoire
             tour += 1  # Passer au tour suivant   # Vérification des résultats du jeu
     if victoirej1 == True:
-        print("Victoire du joueur 1")
-        ajoutscore[4] = 15-tour# le score est de 15 a la base et diminue d'un point par tour
-        ajout_val_score()
-        print("gain de", ajoutscore[4],"points au score") #affichage du score
+        affichagemorpion()
+        print("gain du bot 1")
         affichagemorpion()
     elif victoirej2 == True:
         print("Victoire du joueur 2")
@@ -363,17 +358,11 @@ def morpionbotbot():# Fonction principale pour gérer le jeu
             victoire()  # Vérifier la victoire
             tour += 1  # Passer au tour suivant
     if victoirej1 == True:
-        
+       affichagemorpion()
+       print("gain du bot 1")
+    elif victoirej2 == True:      
         affichagemorpion()
-        ajoutscore[4] = 15-tour
-        ajout_val_score()
-        print("gain de", ajoutscore[4],"points au score")
-    elif victoirej2 == True:
-        
-        affichagemorpion()
-        ajoutscore[5] = 15-tour
-        ajout_val_score()
-        print("gain de", ajoutscore[5],"points au score")
+        print("gain du bot 2")
     else:
         print("égalité")
         affichagemorpion()    
