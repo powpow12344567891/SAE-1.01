@@ -14,7 +14,8 @@ def jouer(grille, col, joueur):
         if grille[i][col] == ' ':
             grille[i][col] = joueur
             return
-
+def bot()
+    
 def verifier_victoire(grille, joueur):
     for i in range(6):
         for j in range(7):
@@ -33,7 +34,7 @@ def verifier_victoire(grille, joueur):
                     return True
     return False
 
-def jeu():
+def jeuhumain():
     grille = creer_grille()
     joueurs = ['X', 'O']
     tour = 0
@@ -63,4 +64,4 @@ def jeu():
         else:
             print("Colonne pleine, essayez une autre colonne.")
 
-jeu()
+jeuhumain()

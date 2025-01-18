@@ -41,6 +41,7 @@ def devinnettesjoueur(choix: int, manche: int):
     return nombretours  # Retourne le nombre de tours pris par le joueur
 
 # Fonction qui gère le jeu de devinettes contre un bot
+# Fonction qui gère le jeu de devinettes contre un bot avec des explications plus claires
 def devinettepve(choix: int, manche: int):
     """
     Fonction permettant de jouer contre un bot avec différents niveaux de difficulté.
@@ -50,7 +51,11 @@ def devinettepve(choix: int, manche: int):
     # Sélection de la difficulté du bot
     while True:
         try:
-            diff = int(input("Choisissez la difficulté du bot (1: facile, 2: moyen, 3: difficile) : "))
+            print("\nChoisissez la difficulté du bot :")
+            print("1 : Facile ")
+            print("2 : Moyen")
+            print("3 : Difficile")
+            diff = int(input("Entrez le numéro de la difficulté (1, 2 ou 3) : "))
             if diff not in [1, 2, 3]:
                 print("Erreur : Veuillez choisir une difficulté valide (1, 2 ou 3).")
             else:
@@ -58,54 +63,56 @@ def devinettepve(choix: int, manche: int):
         except ValueError:
             print("Erreur : Veuillez entrer un nombre entier correspondant à une difficulté.")
 
-    if manche % 2 == 1:  # Bot choisit et joueur humain devine
-        essai = demande_valeur("J1, devinez la valeur choisie par le bot : ")
+    if manche % 2 == 1:  # Le bot choisit et le joueur humain devine
         choix_bot = random.randint(0, 1000)
-        print("Le bot a choisi une valeur (cachée).")
+        print("\nLe bot a choisi une valeur entre 0 et 1000 (cachée). À vous de deviner !")
+        essai = demande_valeur("J1, devinez la valeur choisie par le bot : ")
 
         while essai != choix_bot:
-            print("Tour", nombretours)  # Affiche le numéro du tour
+            print(f"Tour {nombretours}")  # Affiche le numéro du tour
             nombretours += 1
 
+            # Indique si la valeur entrée est plus petite ou plus grande que la valeur à trouver
             if essai < choix_bot:
-                print("La valeur", essai, "est plus petite que la valeur choisie.")
+                print(f"La valeur {essai} est trop petite.")
             elif essai > choix_bot:
-                print("La valeur", essai, "est plus grande que la valeur choisie.")
+                print(f"La valeur {essai} est trop grande.")
 
             essai = demande_valeur("Essayez encore : ")
 
-        print("La valeur est correcte, trouvée en", nombretours, "tours.")
+        print(f"\nLa valeur {choix_bot} est correcte, trouvée en {nombretours} tours.")
+    else:  # Le joueur humain choisit et le bot devine
+        print("\nLe bot va maintenant essayer de deviner votre valeur. Soyez prêt !")
 
-    else:  # Joueur humain choisit et le bot devine
-        print("Le bot essaie de deviner votre valeur.")
-
+        # Différentes stratégies en fonction de la difficulté choisie
         if diff == 1:
-            essai = random.randint(0, 1000)
+            essai = random.randint(0, 1000)  # Choix totalement aléatoire
         elif diff == 2:
             intervalle_min, intervalle_max = 0, 1000
-            essai = (intervalle_min + intervalle_max) // 2
+            essai = (intervalle_min + intervalle_max) // 2  # L'approche intermédiaire
         else:
             intervalle_min, intervalle_max = 0, 1000
-            essai = (intervalle_min + intervalle_max) // 2
+            essai = (intervalle_min + intervalle_max) // 2  # Recherche binaire pour la difficulté maximale
 
         while essai != choix:
-            print("Tour", nombretours)  # Affiche le numéro du tour
+            print(f"Tour {nombretours}")  # Affiche le numéro du tour
             nombretours += 1
             print(f"Le bot a proposé : {essai}")
 
             if essai < choix:
-                print("La valeur", essai, "est plus petite que la valeur choisie.")
+                print(f"La valeur {essai} est trop petite.")
                 intervalle_min = essai + 1
             elif essai > choix:
-                print("La valeur", essai, "est plus grande que la valeur choisie.")
+                print(f"La valeur {essai} est trop grande.")
                 intervalle_max = essai - 1
 
+            # Mise à jour de la proposition du bot en fonction de la difficulté
             if diff == 1:
-                essai = random.randint(intervalle_min, intervalle_max)
+                essai = random.randint(intervalle_min, intervalle_max)  # Choix totalement aléatoire
             else:
-                essai = (intervalle_min + intervalle_max) // 2
+                essai = (intervalle_min + intervalle_max) // 2  # Recherche binaire (ou approche intermédiaire)
 
-        print("La valeur est correcte, trouvée en", nombretours, "tours.")
+        print(f"\nLe bot a trouvé la valeur {choix} en {nombretours} tours.")
 
     return nombretours  # Retourne le nombre de tours pris
 
@@ -185,13 +192,13 @@ def lancement():
 
     # Affichage des scores finaux
     if nombretoursj1 > 14:
-        print("Le joueur 1 a mis au moins 15 tours et ne gagne donc aucun point.")
+        print("Le joueur 1 a mis plus de 15 tours et a mis", nombretoursj1 ," tours, is ne gagne donc aucun point.")
     else:
         ajoutscore[0] = 15 - nombretoursj1
         print("Le joueur 1 a gagné", 15 - nombretoursj1, "points.")
 
     if nombretoursj2 > 14:
-        print("Le joueur 2 a mis au moins 15 tours et ne gagne donc aucun point.")
+        print("Le joueur 1 a mis plus de 15 tours et a mis", nombretoursj2," tours, il ne gagne donc aucun point.")
     else:
         ajoutscore[1] = 15 - nombretoursj2
         print("Le joueur 2 a gagné", 15 - nombretoursj2, "points.")
@@ -199,4 +206,3 @@ def lancement():
     ajout_val_score()
     print("Fin du jeu !")
 
-lancement()
