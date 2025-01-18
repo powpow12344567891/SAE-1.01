@@ -3,6 +3,7 @@ from Score import affichescore  # Importer uniquement la fonction affichescore
 from morpion import menumorpion  # Importer uniquement la fonction morpion
 from devinette import lancement  # Importer uniquement la fonction lancement
 from allumette import choix_pvpve  # Importer uniquement la fonction allumette
+from puissance4 import jeuhumain
 
 # Fonction pour effacer l'écran de la console
 def clear():
@@ -21,14 +22,15 @@ def menu():
         print("*                                    1) DEVINETTE                                             *")
         print("*                                    2) ALLUMETTE                                             *")
         print("*                                    3) MORPION                                               *")
-        print("*                                    4) SCORE                                                 *")
-        print("*                                    5) QUITTER                                               *")
+        print("*                                    4) puissance 4                                           *")
+        print("*                                    5) SCORE                                                 *")
+        print("*                                    6) QUITTER                                               *")
         print("***********************************************************************************************")
         
         try:
             choixmenu = int(input("Choisir une option : "))  # Lecture de l'option choisie par l'utilisateur
             # Vérifie si l'option choisie est valide
-            if choixmenu not in [1, 2, 3, 4, 5]:
+            if choixmenu not in [1, 2, 3, 4, 5, 6]:
                 print("Erreur, veuillez choisir une option valide (1, 2, 3, 4 ou 5).")
                 continue  # Recommence la boucle en cas de choix invalide
         except ValueError:
@@ -48,8 +50,11 @@ def menu():
             menumorpion()  # Lance le jeu MORPION
         elif choixmenu == 4:
             clear()  # Efface l'écran
-            affichescore()  # Appelle la fonction pour afficher le score
+            jeuhumain()
+  # Appelle la fonction pour afficher le score
         #quitter le programme
+        elif choixmenu == 5:
+             affichescore()
         elif choixmenu == 5:
             clear()  # Efface l'écran
             print("Merci d'avoir joué ! À bientôt.")
