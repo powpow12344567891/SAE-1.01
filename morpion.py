@@ -14,7 +14,7 @@ ordre : int
 choixtour : int
 choixmode : int
 diffbot : int
-diffbot = 0
+diffbot = 3
 
 # Initialisation des variables
 victoirej1 = False  # Indique si le joueur 1 a gagné
@@ -341,9 +341,39 @@ def menumorpion():
                 elif choixmode == 2:
                     morpionbot()
                 else:
-                    print("NaN")
+                    morpionbotbot()
         except ValueError:
             print("Erreur : Veuillez entrer un nombre entier (1 ou 2).")
+def morpionbotbot():# Fonction principale pour gérer le jeu
+    global tour
+    # Boucle principale du jeu
+    while ((victoirej1 == False) and (victoirej2 == False) and (tour <= 9)):
+        choixbot1()  # Tour du joueur 1
+        affichagemorpion()
+        victoire()  # Vérifier la victoire
+        tour += 1  # Passer au tour suivant      
+        ajout_val_score() 
+        # Si personne n'a gagné et qu'il reste des tours, c'est au joueur 2
+        if ((victoirej1 == False) and (victoirej2 == False) and (tour <= 9)):
+            choixbot2()  # Tour du joueur 2
+            affichagemorpion()
+            victoire()  # Vérifier la victoire
+            tour += 1  # Passer au tour suivant
+    if victoirej1 == True:
+        print("Victoire du bot 1")
+        affichagemorpion()
+        ajoutscore[4] = 15-tour
+        ajout_val_score()
+        print("gain de", ajoutscore[4],"points au score")
+    elif victoirej2 == True:
+        print("Victoire du bot 2")
+        affichagemorpion()
+        ajoutscore[5] = 15-tour
+        ajout_val_score()
+        print("gain de", ajoutscore[5],"points au score")
+    else:
+        print("égalité")
+        affichagemorpion()    
 def morpion():                
     print("Choix du joueur qui commence")
     print("1) Joueur 1 (X)")
@@ -387,4 +417,4 @@ def morpionbot():
         morpionbotj1()
     else:
         morpionbotj2()
-morpionbot()
+menumorpion()
