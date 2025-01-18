@@ -132,18 +132,18 @@ def jeuhumain_ou_bot():
             
             if verifier_victoire(grille, symbole_courant):
                 afficher_grille(grille)
-                print("{joueur_courant} a gagné avec le symbole {symbole_courant} !")
+                print(joueur_courant, " a gagné !")
                  
                 # Mise à jour du score
                 if joueur_courant == 'Joueur 1':
                     ajoutscore[6] = 25 - tour  # J1 gagne
                     ajout_val_score()  # Appel de la fonction pour mettre à jour le score
-                    print("{joueur_courant} a gagné {ajoutscore[6]} points")    
+                    print("il a donc gagné" ,ajoutscore[6]," points")    
                 
                 elif joueur_courant == 'Joueur 2':
                     ajoutscore[7] = 25 - tour  # J2 gagne
                     ajout_val_score()  # Appel de la fonction pour mettre à jour le score
-                    print("{joueur_courant} a gagné {ajoutscore[7]} points")  
+                    print("il a donc gagné" ,ajoutscore[7]," points")   
                 
                 break
 
@@ -152,6 +152,3 @@ def jeuhumain_ou_bot():
             tour += 1
         else:
             print("Colonne pleine, essayez une autre colonne.")
-
-# Lancer le jeu
-jeuhumain_ou_bot()
