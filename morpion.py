@@ -14,8 +14,9 @@ ordre : int
 choixtour : int
 choixmode : int
 diffbot : int
-diffbot = 3
-
+diffbot = 0
+diffbot2 : int
+diffbot2 = 0
 # Initialisation des variables
 victoirej1 = False  # Indique si le joueur 1 a gagné
 victoirej2 = False  # Indique si le joueur 2 a gagné
@@ -148,7 +149,7 @@ def choixbot2():
     affichagemorpion()
     print("\n")
     
-    if diffbot == 1:  # Facile : Choisir une case aléatoire
+    if diffbot2 == 1:  # Facile : Choisir une case aléatoire
         choix_valide = False  # Indicateur pour vérifier si le choix est valide
         while choix_valide == False:
             choix = random.randint(1, 9)
@@ -156,7 +157,7 @@ def choixbot2():
                 tableau1[choix - 1] = "  X  "  # Marquer la case avec un "X" pour Bot 2
                 choix_valide = True  # Marquer que le choix est valide pour sortir de la boucle
     
-    elif diffbot == 2:  # Moyen : Prioriser le centre, coins et bords
+    elif diffbot2 == 2:  # Moyen : Prioriser le centre, coins et bords
         # Jouer au centre si possible
         if tableau1[4] == "  -  ":
             tableau1[4] = "  X  "
@@ -177,7 +178,7 @@ def choixbot2():
                     tableau1[bord] = "  X  "
                     return
     
-    elif diffbot == 3:  # Difficile : Stratégie avancée pour bloquer et gagner
+    elif diffbot2 == 3:  # Difficile : Stratégie avancée pour bloquer et gagner
         # 1. Vérifier si le bot peut gagner
         for ligne in lignes_gagnantes:
             cases = [tableau1[i] for i in ligne]
@@ -323,6 +324,7 @@ def morpionbotj2():  # Fonction principale pour gérer le jeu
         print("égalité")
         affichagemorpion()
 def menumorpion():
+    global diffbot, diffbot2
     initialisationtableau()
     choix_valide = False  # Indicateur pour vérifier si le choix est valide
     while not choix_valide:
@@ -339,6 +341,31 @@ def menumorpion():
                 elif choixmode == 2:
                     morpionbot()
                 else:
+                    choix_valide = False 
+                    while choix_valide not in [1,2,3]:
+                        try:
+                            print("choix de la difficulté du bot 1 ")
+                            print("1) facile")
+                            print("2) normal")
+                            print("3) difficile")
+                            diffbot = int(input("votre choix : "))
+                            if diffbot in [1, 2, 3]:
+                                choix_valide = True  # Marquer que le choix est valide pour sortir de la boucle
+                        except ValueError:
+                            print("Erreur : Veuillez entrer un nombre entier (1 2 ou 3).")
+                    choix_valide = False 
+                    while choix_valide not in [1,2,3]:
+                        try:
+                            print("choix de la difficulté du bot 1 ")
+                            print("1) facile")
+                            print("2) normal")
+                            print("3) difficile")
+                            diffbot2 = int(input("votre choix : "))
+                            if diffbot2 in [1, 2, 3]:
+                                choix_valide = True  # Marquer que le choix est valide pour sortir de la boucle
+                        except ValueError:
+                            print("Erreur : Veuillez entrer un nombre entier (1 2 ou 3).")
+                    print(diffbot2)
                     morpionbotbot()
         except ValueError:
             print("Erreur : Veuillez entrer un nombre entier (1 2 ou 3).")
@@ -354,7 +381,6 @@ def morpionbotbot():# Fonction principale pour gérer le jeu
         # Si personne n'a gagné et qu'il reste des tours, c'est au joueur 2
         if ((victoirej1 == False) and (victoirej2 == False) and (tour <= 9)):
             choixbot2()  # Tour du joueur 2
-            affichagemorpion()
             victoire()  # Vérifier la victoire
             tour += 1  # Passer au tour suivant
     if victoirej1 == True:
@@ -406,8 +432,10 @@ def morpionbot():
             diffbot = int(input("Choix (1, 2 ou 3) : "))
             if diffbot in [1, 2, 3]:
                 choix_valide = True  # Marquer que le choix est valide pour sortir de la boucle
+                diffbot2 = diffbot
         except ValueError:
             print("Erreur : Veuillez entrer un nombre entier (1, 2 ou 3).")
+            
     if choixtour == 1:
         morpionbotj1()
     else :
