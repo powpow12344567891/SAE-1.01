@@ -118,7 +118,7 @@ def jeuhumain_ou_bot():
             print("Tour du Bot...")
             col = choix_bot(grille)
         else:
-            print(f"Tour de {joueur_courant} ({symbole_courant})")
+            print("Tour de {joueur_courant} ({symbole_courant})")
             try:
                 col = int(input("Choisissez une colonne (0-6): "))
                 if col < 0 or col > 6:
@@ -132,16 +132,18 @@ def jeuhumain_ou_bot():
             
             if verifier_victoire(grille, symbole_courant):
                 afficher_grille(grille)
-                print(f"{joueur_courant} a gagné avec le symbole {symbole_courant}!")
+                print("{joueur_courant} a gagné avec le symbole {symbole_courant} !")
                  
                 # Mise à jour du score
                 if joueur_courant == 'Joueur 1':
-                    ajoutscore[6] += 1  # J1 gagne
+                    ajoutscore[6] = 25 - tour  # J1 gagne
                     ajout_val_score()  # Appel de la fonction pour mettre à jour le score
+                    print("{joueur_courant} a gagné {ajoutscore[6]} points")    
                 
                 elif joueur_courant == 'Joueur 2':
-                    ajoutscore[7] += 1  # J2 gagne
+                    ajoutscore[7] = 25 - tour  # J2 gagne
                     ajout_val_score()  # Appel de la fonction pour mettre à jour le score
+                    print("{joueur_courant} a gagné {ajoutscore[7]} points")  
                 
                 break
 
