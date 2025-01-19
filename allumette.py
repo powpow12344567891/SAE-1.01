@@ -15,17 +15,17 @@ def choix_pvpve():
     elif choixMode==2:
         joueur1 = input("Entrez le nom du joueur 1: ")
         joueur2 = "Ordinateur_1"
-        print("Entrez 1 pour jouer contre un ordinateur d'une difficultée aléatoire.")
-        print("Entrez 2 pour jouer contte un ordinateur d'une difficultée facile.")
-        print("Entrez 3 pour jouer contte un ordinateur d'une difficultée difficile.")
+        print("Entrez 1 pour jouer contre un ordinateur d'une difficultée facile.")
+        print("Entrez 2 pour jouer contte un ordinateur d'une difficultée difficile.")
+        print("Entrez 3 pour jouer contte un ordinateur d'une difficultée aléatoire.")
         choixDiff=int(input("Entrez le niveau de difficulté souhaité: "))
         allumette(joueur1, joueur2, choixMode, choixDiff)
     elif choixMode==3:
         joueur1 = "Ordinateur_1"
         joueur2 = "Ordinateur_2"
-        print("Entrez 1 pour voir deux ordinateurs jouer avec une difficultée aléatoire.")
-        print("Entrez 2 pour voir deux ordinateurs jouer avec une difficultée facile.")
-        print("Entrez 3 pour voir deux ordinateurs jouer avec une difficultée difficile.")
+        print("Entrez 1 pour voir deux ordinateurs jouer avec une difficultée facile.")
+        print("Entrez 2 pour voir deux ordinateurs jouer avec une difficultée difficile.")
+        print("Entrez 3 pour voir deux ordinateurs jouer avec une difficultée aléatoire.")
         choixDiff=int(input("Entrez le niveau de difficulté souhaité: "))
         allumette(joueur1, joueur2, choixMode, choixDiff)
 
@@ -41,6 +41,7 @@ def allumette(joueur1: str, joueur2: str, choixMode:int, choixDiff:int):
         print(f"{joueur1}, c'est votre tour.")
         if choixMode==1 or choixMode==2:
             choixj1 = demande_allumettes(f"{joueur1}, choisissez combien d'allumettes vous voulez prendre (entre 1 et 3) : ")
+        else:
             if choixDiff==1:
                 if allumette>5:
                     choixj1=random.randint(1,3)
@@ -63,7 +64,6 @@ def allumette(joueur1: str, joueur2: str, choixMode:int, choixDiff:int):
                     choixj1=1
             else:
                 choixj1=random.randint(1,3)
-#20 17 14 11 8 5 2
 
         while choixj1 > allumette:
             print("Erreur, il n'y a pas la quantité d'allumette que vous souhaité retirer.")
@@ -112,7 +112,6 @@ def allumette(joueur1: str, joueur2: str, choixMode:int, choixDiff:int):
                 choixj2=random.randint(1,3)
                 while choixj2 > allumette:
                     choixj2 = random.randint(1,allumette)
-
 
         while choixj2 > allumette:
             print("Erreur, il n'y a pas la quantité d'allumette que vous souhaité retirer.")
