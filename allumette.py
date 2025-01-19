@@ -14,6 +14,7 @@ def choix_pvpve():
     if choixMode==1:
         joueur1 = input("Entrez le nom du joueur 1: ")
         joueur2 = input("Entrez le nom du joueur 2: ")
+        choixDiff=1
         allumette(joueur1, joueur2, choixMode, choixDiff)
     elif choixMode==2:
         joueur1 = input("Entrez le nom du joueur 1: ")
@@ -60,15 +61,17 @@ def allumette(joueur1: str, joueur2: str, choixMode:int, choixDiff:int):
                     choixj1=allumette
             elif choixDiff==2:
                 if allumette>8:
-                    choixj1=3
-                elif allumette>=7:
-                    choixj1=2
+                    choixj1=random.randint(1,3)
+                elif allumette==8:
+                    choixj2=random.randint(1,3)
+                elif allumette==7:
+                    choixj2=2
                 elif allumette==6:
-                    choixj1=2
+                    choixj1=1
                 elif allumette==5:
                     choixj1=1  
                 elif allumette<5 and allumette>1:
-                    choixj1==allumette-1
+                    choixj1=allumette-1
                 else:
                     choixj1=1
             else:
@@ -107,16 +110,22 @@ def allumette(joueur1: str, joueur2: str, choixMode:int, choixDiff:int):
                 elif allumette<=3:
                     choixj2=allumette
             elif choixDiff==2:
-                if allumette>8:
+                if allumette>11:
                     choixj2=3
-                elif allumette>=7:
+                elif allumette==11:
+                    choixj2=2
+                elif allumette>=9:
+                    choixj2=3
+                elif allumette==8:
+                    choixj2=random.randint(1,3)
+                elif allumette==7:
                     choixj2=2
                 elif allumette==6:
-                    choixj2=2
+                    choixj2=1
                 elif allumette==5:
                     choixj2=1  
                 elif allumette<5 and allumette>1:
-                    choixj2==allumette-1
+                    choixj2=allumette-1
                 else:
                     choixj2=1
             else:

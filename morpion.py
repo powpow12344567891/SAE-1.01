@@ -356,7 +356,7 @@ def menumorpion():
                     choix_valide = False 
                     while choix_valide not in [1,2,3]:
                         try:
-                            print("choix de la difficulté du bot 1 ")
+                            print("choix de la difficulté du bot 2 ")
                             print("1) facile")
                             print("2) normal")
                             print("3) difficile")
@@ -411,7 +411,7 @@ def morpion():
         except ValueError:
             print("Erreur : Veuillez entrer un nombre entier (1 ou 2).")
 def morpionbot():
-    global diffbot                
+    global diffbot, diffbot2                
     print("Choisisez quand commencer ")
     choix_valide = False  # Indicateur pour vérifier si le choix est valide
     while not choix_valide:
