@@ -22,7 +22,7 @@ def choix_pvpve():
         print("Entrez 2 pour jouer contte un ordinateur d'une difficultée difficile.")
         print("Entrez 3 pour jouer contte un ordinateur d'une difficultée aléatoire.")
         choixDiff=int(input("Entrez le niveau de difficulté souhaité: "))
-        while choixMode<1 or choixMode>3:
+        while choixDiff<1 or choixDiff>3:
             print("Erreur, nombre invalide.")
             choixDiff=int(input("Entrez le niveau de difficulté souhaité: "))
         allumette(joueur1, joueur2, choixMode, choixDiff)
@@ -33,7 +33,7 @@ def choix_pvpve():
         print("Entrez 2 pour voir deux ordinateurs jouer avec une difficultée difficile.")
         print("Entrez 3 pour voir deux ordinateurs jouer avec une difficultée aléatoire.")
         choixDiff=int(input("Entrez le niveau de difficulté souhaité: "))
-        while choixMode<1 or choixMode>3:
+        while choixDiff<1 or choixDiff>3:
             print("Erreur, nombre invalide.")
             choixDiff=int(input("Entrez le niveau de difficulté souhaité: "))
         allumette(joueur1, joueur2, choixMode, choixDiff)
