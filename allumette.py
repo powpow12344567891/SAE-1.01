@@ -110,16 +110,14 @@ def allumette(joueur1: str, joueur2: str, choixMode:int, choixDiff:int):
                     choixj2=1
             else:
                 choixj2=random.randint(1,3)
+                while choixj2 > allumette:
+                    choixj2 = random.randint(1,allumette)
+
 
         while choixj2 > allumette:
             print("Erreur, il n'y a pas la quantité d'allumette que vous souhaité retirer.")
             choixj2 = demande_allumettes(f"{joueur2}, choisissez combien d'allumettes vous voulez prendre (entre 1 et 3) : ")
         allumette -= choixj2
-#        else:
-#            choixj2=random.randint(1,3)
-#            while choixj2 > allumette:
-#                choixj2 = random.randint(1,allumette)
-#            allumette -= choixj2
             
         if allumette <= 0:
             print("Vous avez retiré la dernière allumette.")
