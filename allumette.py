@@ -110,7 +110,11 @@ def allumette(joueur1: str, joueur2: str, choixMode:int, choixDiff:int):
                 elif allumette<=3:
                     choixj2=allumette
             elif choixDiff==2:
-                if allumette>8:
+                if allumette>11:
+                    choixj2=3
+                elif allumette==11:
+                    choixj2=2
+                elif allumette>=9:
                     choixj2=3
                 elif allumette==8:
                     choixj2=random.randint(1,3)
