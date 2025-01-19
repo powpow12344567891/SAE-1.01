@@ -41,8 +41,8 @@ def choix_pvpve():
 def allumette(joueur1: str, joueur2: str, choixMode:int, choixDiff:int):
     choixj1: int
     choixj2: int
-    allumette: int = 20
-    perdant: int = 0  # Affiche le nombre initial d'allumettes
+    allumette: int = 20 # Affiche le nombre initial d'allumettes
+    perdant: int = 0
     print("Il y a un total de", allumette, "allumettes.")
     print("|" * allumette)
     while allumette > 0:  
