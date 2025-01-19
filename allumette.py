@@ -64,8 +64,8 @@ def allumette(joueur1: str, joueur2: str, choixMode:int, choixDiff:int):
                     choixj1=1
             else:
                 choixj1=random.randint(1,3)
-                while choixj2 > allumette:
-                    choixj2 = random.randint(1,allumette)
+                while choixj1 > allumette:
+                    choixj1 = random.randint(1,allumette)
 
         while choixj1 > allumette:
             print("Erreur, il n'y a pas la quantité d'allumette que vous souhaité retirer.")
