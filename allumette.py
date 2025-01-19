@@ -14,6 +14,7 @@ def choix_pvpve():
     if choixMode==1:
         joueur1 = input("Entrez le nom du joueur 1: ")
         joueur2 = input("Entrez le nom du joueur 2: ")
+        choixDiff=1
         allumette(joueur1, joueur2, choixMode, choixDiff)
     elif choixMode==2:
         joueur1 = input("Entrez le nom du joueur 1: ")
