@@ -52,18 +52,9 @@ def verifier_victoire(grille, symbole):
                     return True
     return False
 
-def choisir_mode():
-    print("Choisissez le mode de jeu :")
-    print("1. Jouer contre un autre humain")
-    print("2. Jouer contre un bot ")
-    choix = int(input("votre choix :"))
-    try:
-        if choix  not in [1, 2]:
-            print("Erreur, veuillez choisir une option valide (1 ou 2).")
-        else:
-            return choix   # Retourne le choix valide
-    except ValueError:
-        print("Erreur, veuillez entrer un nombre entier correspondant à une option.")
+
+ 
+
 
 def choisir_symboles():
     print("Joueur 1, voulez-vous jouer avec X ou O ?")
@@ -95,11 +86,21 @@ def choisir_premier_joueur():
 
 def jeuhumain_ou_bot():
     grille = creer_grille()
-    mode = choisir_mode()
+    print("Choisissez le mode de jeu :")
+    print("1. Jouer contre un autre humain")
+    print("2. Jouer contre un bot ")
+    choix = 0
+    while choix  not in [1, 2]:
+        try:
+            if choix  not in [1, 2]:
+                choix = int(input("votre choix :"))
+            else:
+                return choix   # Retourne le choix valide
+        except ValueError:
+            print("Erreur, veuillez entrer un nombre entier correspondant à une option.")
     symbole_j1, symbole_j2 = choisir_symboles()
     premier_joueur = choisir_premier_joueur()
-
-    if mode == 2:
+    if choix == 2:
         joueurs = [('Joueur 1', symbole_j1), ('Bot', symbole_j2)]
     else:
         joueurs = [('Joueur 1', symbole_j1), ('Joueur 2', symbole_j2)]
@@ -118,7 +119,7 @@ def jeuhumain_ou_bot():
             print("Tour du Bot...")
             col = choix_bot(grille)
         else:
-            print("Tour de {joueur_courant} ({symbole_courant})")
+            print("Tour de ", joueur_courant," ",symbole_courant)
             try:
                 col = int(input("Choisissez une colonne (0-6): "))
                 if col < 0 or col > 6:
