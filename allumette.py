@@ -8,6 +8,9 @@ def choix_pvpve():
     print("Entrez 2 pour jouer contre un bot à difficultée variable.")
     print("Entrez 3 pour faire jouer un bot contre un autre avec difficultée variable.")
     choixMode=int(input("Entrez votre choix: "))
+    while choixMode<1 or choixMode>3:
+        print("Erreur, nombre invalide.")
+        choixMode=int(input("Entrez votre choix: "))
     if choixMode==1:
         joueur1 = input("Entrez le nom du joueur 1: ")
         joueur2 = input("Entrez le nom du joueur 2: ")
@@ -19,6 +22,9 @@ def choix_pvpve():
         print("Entrez 2 pour jouer contte un ordinateur d'une difficultée difficile.")
         print("Entrez 3 pour jouer contte un ordinateur d'une difficultée aléatoire.")
         choixDiff=int(input("Entrez le niveau de difficulté souhaité: "))
+        while choixMode<1 or choixMode>3:
+            print("Erreur, nombre invalide.")
+            choixDiff=int(input("Entrez le niveau de difficulté souhaité: "))
         allumette(joueur1, joueur2, choixMode, choixDiff)
     elif choixMode==3:
         joueur1 = "Ordinateur_1"
@@ -27,6 +33,9 @@ def choix_pvpve():
         print("Entrez 2 pour voir deux ordinateurs jouer avec une difficultée difficile.")
         print("Entrez 3 pour voir deux ordinateurs jouer avec une difficultée aléatoire.")
         choixDiff=int(input("Entrez le niveau de difficulté souhaité: "))
+        while choixMode<1 or choixMode>3:
+            print("Erreur, nombre invalide.")
+            choixDiff=int(input("Entrez le niveau de difficulté souhaité: "))
         allumette(joueur1, joueur2, choixMode, choixDiff)
 
 def allumette(joueur1: str, joueur2: str, choixMode:int, choixDiff:int):
