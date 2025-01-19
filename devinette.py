@@ -141,6 +141,7 @@ def devinetteve():
         nombretours += 1
 
 # Fonction de lancement et gestion des manches
+# Modification de la fonction lancement avec gestion individuelle des scores
 def lancement():
     """
     Fonction de lancement et de gestion des manches et des scores.
@@ -178,31 +179,41 @@ def lancement():
         while choix > 1000:
             choix = demande_valeur("Erreur : La valeur doit être maximum 1000. Entrez un nouveau nombre : ")
 
-        if joueurbotbot == 1:
+        # Gestion des modes
+        if joueurbotbot == 1:  # Mode joueur contre joueur
             nombretours = devinnettesjoueur(choix, manche)
-        elif joueurbotbot == 2:
+            if manche % 2 == 1:
+                nombretoursj1 += nombretours
+            else:
+                nombretoursj2 += nombretours
+        elif joueurbotbot == 2:  # Mode joueur contre bot
+            
             nombretours = devinettepve(choix, manche)
+            if manche % 2 == 1:
+                nombretoursj1 += nombretours  # Points attribués uniquement au joueur humain
+            else:
+                print("Le bot a gagné cette manche.")  # Le bot ne gagne pas de points
+        else:  # Mode bot contre bot
+            nombretours = devinetteve()
+
+    # Calcul et affichage des scores finaux
+    print("\n=== Résultats finaux ===")
+    if joueurbotbot == 1:  # Mode joueur contre joueur
+        if nombretoursj1 > 14:
+            print(f"Le joueur 1 a mis plus de 15 tours ({nombretoursj1} tours) et ne gagne aucun point.")
         else:
-            nombretours = devinetteve()  # Fonction pour gérer les bots
+            scorej1 = 15 - nombretoursj1
+            print(f"Le joueur 1 a gagné {scorej1} points.")
 
-        if manche % 2 == 1:
-            nombretoursj1 += nombretours
+        if nombretoursj2 > 14:
+            print(f"Le joueur 2 a mis plus de 15 tours ({nombretoursj2} tours) et ne gagne aucun point.")
         else:
-            nombretoursj2 += nombretours
-
-    # Affichage des scores finaux
-    if nombretoursj1 > 14:
-        print("Le joueur 1 a mis plus de 15 tours et a mis {nombretoursj1} tours, il ne gagne donc aucun point.")
-    else:
-        ajoutscore[0] = 15 - nombretoursj1
-        print("Le joueur 1 a gagné", 15 - nombretoursj1, "points.")
-
-    if nombretoursj2 > 14:
-        print("Le joueur 1 a mis plus de 15 tours et a mis {nombretoursj2} tours, il ne gagne donc aucun point.")
-    else:
-        ajoutscore[1] = 15 - nombretoursj2
-        print("Le joueur 2 a gagné", 15 - nombretoursj2, "points.")
-
-    ajout_val_score()
+            scorej2 = 15 - nombretoursj2
+            print(f"Le joueur 2 a gagné {scorej2} points.")
+    elif joueurbotbot == 2:  # Mode joueur contre bot
+        if nombretoursj1 > 14:
+            print(f"Le joueur humain a mis plus de 15 tours ({nombretoursj1} tours) et ne gagne aucun point.")
+        else:
+            scorej1 = 15 - nombretoursj1
+            print(f"Le joueur humain a gagné {scorej1} points.")
     print("Fin du jeu !")
-
