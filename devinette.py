@@ -89,7 +89,7 @@ def devinettepve(choix: int, manche: int):
             essai = random.randint(0, 1000)  # Choix totalement aléatoire
         elif diff == 2:
             intervalle_min, intervalle_max = 0, 1000
-            essai = (intervalle_min + intervalle_max) // 2  # L'approche intermédiaire
+            essai = random.randint(intervalle_min, intervalle_max) #recherche binnaire semi aleatoire 
         else:
             intervalle_min, intervalle_max = 0, 1000
             essai = (intervalle_min + intervalle_max) // 2  # Recherche binaire pour la difficulté maximale
