@@ -5,8 +5,8 @@ def choix_pvpve():
     choixMode:int
     choixDiff:int
     print("Entrez 1 pour jouer contre un autre joueur local.")
-    print("Entrez 2 pour jouer contre un bot à difficultée variable.")
-    print("Entrez 3 pour faire jouer un bot contre un autre avec difficultée variable.")
+    print("Entrez 2 pour jouer contre un bot à difficulté variable.")
+    print("Entrez 3 pour faire jouer un bot contre un autre avec difficulté variable.")
     choixMode=demande_allumettes("Entrez votre choix: ")
     if choixMode==1:
         joueur1 = input("Entrez le nom du joueur 1: ")
@@ -16,17 +16,17 @@ def choix_pvpve():
     elif choixMode==2:
         joueur1 = input("Entrez le nom du joueur 1: ")
         joueur2 = "Ordinateur_1"
-        print("Entrez 1 pour jouer contre un ordinateur d'une difficultée facile.")
-        print("Entrez 2 pour jouer contte un ordinateur d'une difficultée difficile.")
-        print("Entrez 3 pour jouer contte un ordinateur d'une difficultée aléatoire.")
+        print("Entrez 1 pour jouer contre un ordinateur d'une difficulté facile.")
+        print("Entrez 2 pour jouer contte un ordinateur d'une difficulté difficile.")
+        print("Entrez 3 pour jouer contte un ordinateur d'une difficulté aléatoire.")
         choixDiff=demande_allumettes("Entrez le niveau de difficulté souhaité: ")
         allumette(joueur1, joueur2, choixMode, choixDiff)
     elif choixMode==3:
         joueur1 = "Ordinateur_1"
         joueur2 = "Ordinateur_2"
-        print("Entrez 1 pour voir deux ordinateurs jouer avec une difficultée facile.")
-        print("Entrez 2 pour voir deux ordinateurs jouer avec une difficultée difficile.")
-        print("Entrez 3 pour voir deux ordinateurs jouer avec une difficultée aléatoire.")
+        print("Entrez 1 pour voir deux ordinateurs jouer avec une difficulté facile.")
+        print("Entrez 2 pour voir deux ordinateurs jouer avec une difficulté difficile.")
+        print("Entrez 3 pour voir deux ordinateurs jouer avec une difficulté aléatoire.")
         choixDiff=demande_allumettes("Entrez le niveau de difficulté souhaité: ")
         allumette(joueur1, joueur2, choixMode, choixDiff)
 
@@ -63,9 +63,7 @@ def allumette(joueur1: str, joueur2: str, choixMode:int, choixDiff:int):
                     choixj1=3
                 elif allumette==7:
                     choixj1=2
-                elif allumette==6:
-                    choixj1=1
-                elif allumette==5:
+                elif allumette>=5:
                     choixj1=1  
                 elif allumette<5 and allumette>1:
                     choixj1=allumette-1
@@ -119,9 +117,7 @@ def allumette(joueur1: str, joueur2: str, choixMode:int, choixDiff:int):
                     choixj2=3
                 elif allumette==7:
                     choixj2=2
-                elif allumette==6:
-                    choixj2=1
-                elif allumette==5:
+                elif allumette>=5:
                     choixj2=1  
                 elif allumette<5 and allumette>1:
                     choixj2=allumette-1
