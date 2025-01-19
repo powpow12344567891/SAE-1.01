@@ -22,7 +22,7 @@ def menu():
         print("*                                    1) DEVINETTE                                             *")
         print("*                                    2) ALLUMETTE                                             *")
         print("*                                    3) MORPION                                               *")
-        print("*                                    4) puissance 4                                           *")
+        print("*                                    4) PUISSANCE 4                                           *")
         print("*                                    5) SCORE                                                 *")
         print("*                                    6) QUITTER                                               *")
         print("***********************************************************************************************")

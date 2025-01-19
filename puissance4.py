@@ -87,8 +87,8 @@ def choisir_premier_joueur():
 def jeuhumain_ou_bot():
     grille = creer_grille()
     print("Choisissez le mode de jeu :")
-    print("1. Jouer contre un autre humain")
-    print("2. Jouer contre un bot ")
+    print("1. Jouer contre un autre humain.")
+    print("2. Jouer contre un bot.")
     choix = 0
     while choix  not in [1, 2]:
         try:
@@ -121,15 +121,15 @@ def jeuhumain_ou_bot():
         else:
             print("Tour de ", joueur_courant," ",symbole_courant)
             try:
-                col = int(input("Choisissez une colonne (0-6): "))
-                if col < 0 or col > 6:
+                col = int(input("Choisissez une colonne (1-7): "))
+                if col < 1 or col > 7:
                     raise ValueError
             except ValueError:
                 print("Entrée invalide, veuillez entrer un nombre entre 0 et 6.")
                 continue
 
-        if est_vide(grille, col):
-            jouer(grille, col, symbole_courant)
+        if est_vide(grille, col-1):
+            jouer(grille, col-1, symbole_courant)
             
             if verifier_victoire(grille, symbole_courant):
                 afficher_grille(grille)
@@ -139,15 +139,13 @@ def jeuhumain_ou_bot():
                 if joueur_courant == 'Joueur 1':
                     ajoutscore[6] = 25 - tour  # J1 gagne
                     ajout_val_score()  # Appel de la fonction pour mettre à jour le score
-                    print("il a donc gagné" ,ajoutscore[6]," points")    
+                    print("Il a donc gagné" ,ajoutscore[6]," points.")    
                 
                 elif joueur_courant == 'Joueur 2':
                     ajoutscore[7] = 25 - tour  # J2 gagne
                     ajout_val_score()  # Appel de la fonction pour mettre à jour le score
-                    print("il a donc gagné" ,ajoutscore[7]," points")   
+                    print("Il a donc gagné" ,ajoutscore[7]," points.")   
                 
-                break
-
                 break
             
             tour += 1
